@@ -55,7 +55,8 @@ export default function Navbar() {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mobileServiceOpen, setMobileServiceOpen] = useState<string | null>(null);
 
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  // FIXED TYPE HERE
+  const dropdownRef = useRef<HTMLLIElement | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -75,14 +76,17 @@ export default function Navbar() {
         setIsServicesOpen(false);
       }
     };
+
     const handleEsc = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setIsServicesOpen(false);
         setIsMobileMenuOpen(false);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("keydown", handleEsc);
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keydown", handleEsc);
@@ -104,7 +108,7 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 md:px-8 h-full flex items-center justify-between relative">
           
-          {/* Logo - Left */}
+          {/* Logo */}
           <Link href="/" className="flex items-baseline gap-1 z-50 group">
             <span className="font-playfair font-bold text-2xl text-text-primary group-hover:text-gold-primary transition">
               Lexxes
@@ -115,9 +119,11 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop Navigation - Centered */}
+          {/* Desktop Nav */}
           <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center">
             <ul className="flex items-center gap-8">
+
+              {/* SERVICES DROPDOWN */}
               <li className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
@@ -132,7 +138,6 @@ export default function Navbar() {
                   />
                 </button>
 
-                {/* Dropdown Menu */}
                 <div
                   className={`absolute top-[calc(100%+1.5rem)] left-1/2 -translate-x-1/2 max-w-[800px] w-[90vw] transition-all duration-300 ${
                     isServicesOpen
@@ -150,6 +155,7 @@ export default function Navbar() {
                           >
                             {service.name}
                           </Link>
+
                           <ul className="space-y-3">
                             {service.subServices.map((sub) => (
                               <li key={sub.name}>
@@ -169,12 +175,15 @@ export default function Navbar() {
                 </div>
               </li>
 
+              {/* NORMAL LINKS */}
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
                     className={`font-inter font-semibold text-sm uppercase tracking-widest transition ${
-                      pathname === link.href ? "text-gold-primary" : "text-text-secondary hover:text-gold-primary"
+                      pathname === link.href
+                        ? "text-gold-primary"
+                        : "text-text-secondary hover:text-gold-primary"
                     }`}
                   >
                     {link.name}
@@ -184,7 +193,7 @@ export default function Navbar() {
             </ul>
           </nav>
 
-          {/* Action Button - Right */}
+          {/* LOGIN BUTTON */}
           <div className="hidden md:block">
             <Link
               href="/login"
@@ -194,119 +203,106 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Toggle */}
+          {/* MOBILE TOGGLE */}
           <button
             className="md:hidden z-50 p-2.5 border border-navy-border bg-navy-secondary/50 backdrop-blur-md rounded-xl hover:bg-navy-border transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle Menu"
           >
-            {isMobileMenuOpen ? <X size={24} className="text-gold-primary"/> : <Menu size={24} className="text-text-primary"/>}
+            {isMobileMenuOpen ? (
+              <X size={24} className="text-gold-primary" />
+            ) : (
+              <Menu size={24} className="text-text-primary" />
+            )}
           </button>
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
-      <div
-        className={`fixed inset-0 z-[60] bg-navy-dark/98 backdrop-blur-xl transition-all duration-500 md:hidden ${
-          isMobileMenuOpen 
-            ? "opacity-100 pointer-events-auto" 
-            : "opacity-0 pointer-events-none translate-y-[-10px]"
-        }`}
-      >
-        <nav className="flex flex-col h-full pt-28 pb-10 px-8 overflow-y-auto">
-          {/* SERVICES SECTION */}
-          <div 
-            className={`transition-all duration-500 delay-100 transform ${
-              isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-            }`}
-          >
+      {/* MOBILE MENU */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 z-[60] bg-navy-dark/98 backdrop-blur-xl md:hidden">
+          <nav className="flex flex-col h-full pt-28 pb-10 px-8 overflow-y-auto">
+
+            {/* SERVICES */}
             <button
               onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
               className="flex justify-between w-full text-2xl font-playfair text-gold-light border-b border-navy-border pb-4"
             >
               Services
-              <ChevronDown className={`transition-transform duration-300 ${mobileServicesOpen ? "rotate-180 text-gold-primary" : ""}`} />
+              <ChevronDown
+                className={`transition-transform ${
+                  mobileServicesOpen ? "rotate-180 text-gold-primary" : ""
+                }`}
+              />
             </button>
 
-            <div className={`overflow-hidden transition-all duration-500 ease-in-out ${mobileServicesOpen ? "max-h-[800px] mt-6" : "max-h-0"}`}>
-              <div className="flex flex-col gap-6 pl-2">
+            {mobileServicesOpen && (
+              <div className="mt-6 flex flex-col gap-6">
                 {servicesLinks.map((service) => (
-                  <div key={service.name} className="border-l border-navy-border pl-4">
+                  <div key={service.name}>
                     <button
                       onClick={() =>
                         setMobileServiceOpen(
                           mobileServiceOpen === service.name ? null : service.name
                         )
                       }
-                      className="flex justify-between w-full text-lg font-playfair text-text-primary py-1"
+                      className="flex justify-between w-full text-lg font-playfair text-text-primary"
                     >
                       {service.name}
                       <ChevronDown
                         size={18}
-                        className={`transition-transform duration-300 ${
-                          mobileServiceOpen === service.name ? "rotate-180 text-gold-primary" : "opacity-50"
+                        className={`transition-transform ${
+                          mobileServiceOpen === service.name
+                            ? "rotate-180 text-gold-primary"
+                            : "opacity-50"
                         }`}
                       />
                     </button>
 
-                    <div
-                      className={`overflow-hidden transition-all duration-300 ${
-                        mobileServiceOpen === service.name
-                          ? "max-h-60 mt-3 opacity-100"
-                          : "max-h-0 opacity-0"
-                      }`}
-                    >
-                      <ul className="flex flex-col gap-4 pl-2">
+                    {mobileServiceOpen === service.name && (
+                      <ul className="flex flex-col gap-4 pl-4 mt-3">
                         {service.subServices.map((sub) => (
                           <li key={sub.name}>
                             <Link
                               href={sub.href}
-                              className="text-text-secondary hover:text-gold-primary text-sm flex items-center gap-2"
+                              className="text-text-secondary hover:text-gold-primary text-sm"
                             >
-                              <span className="w-1.5 h-1.5 bg-gold-primary/30 rounded-full"></span>
                               {sub.name}
                             </Link>
                           </li>
                         ))}
                       </ul>
-                    </div>
+                    )}
                   </div>
                 ))}
               </div>
+            )}
+
+            {/* NAV LINKS */}
+            <div className="flex flex-col gap-6 mt-10">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="text-2xl font-playfair text-text-primary border-b border-navy-border pb-4"
+                >
+                  {link.name}
+                </Link>
+              ))}
             </div>
-          </div>
 
-          {/* MAIN NAV LINKS */}
-          <div className="flex flex-col gap-6 mt-8">
-            {navLinks.map((link, index) => (
+            {/* LOGIN */}
+            <div className="mt-auto pt-10">
               <Link
-                key={link.name}
-                href={link.href}
-                style={{ transitionDelay: `${(index + 2) * 100}ms` }}
-                className={`text-2xl font-playfair border-b border-navy-border pb-4 transition-all transform ${
-                  isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-                } ${pathname === link.href ? "text-gold-primary" : "text-text-primary"}`}
+                href="/login"
+                className="block w-full py-4 bg-gold-primary text-navy-dark rounded-xl font-bold text-center"
               >
-                {link.name}
+                Member Login
               </Link>
-            ))}
-          </div>
+            </div>
 
-          {/* LOGIN BUTTON */}
-          <div 
-            className={`mt-auto pt-10 transition-all duration-500 delay-500 transform ${
-              isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-            }`}
-          >
-            <Link
-              href="/login"
-              className="block w-full py-4 bg-gold-primary text-navy-dark rounded-xl font-bold text-center shadow-lg shadow-gold-primary/10 active:scale-[0.98] transition-transform"
-            >
-              Member Login
-            </Link>
-          </div>
-        </nav>
-      </div>
+          </nav>
+        </div>
+      )}
     </>
   );
 }
