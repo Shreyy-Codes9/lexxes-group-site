@@ -48,14 +48,13 @@ const servicesLinks = [
 export default function Navbar() {
   const pathname = usePathname();
 
+  // --- 1. ALL HOOKS MUST BE DEFINED FIRST ---
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
-
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [mobileServiceOpen, setMobileServiceOpen] = useState<string | null>(null);
 
-  // FIXED TYPE HERE
   const dropdownRef = useRef<HTMLLIElement | null>(null);
 
   useEffect(() => {
@@ -96,6 +95,10 @@ export default function Navbar() {
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset";
   }, [isMobileMenuOpen]);
+
+  // --- 2. CONDITIONAL RETURN (Hides Navbar on Login) ---
+  // This must be placed AFTER all hooks to prevent rendering order errors.
+  if (pathname === "/login") return null;
 
   return (
     <>
