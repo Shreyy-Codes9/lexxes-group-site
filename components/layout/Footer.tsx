@@ -17,8 +17,8 @@ const FOOTER_DATA = {
     title: "Company",
     links: [
       { label: "About Us", href: "/about" },
-      { label: "How It Works", href: "/process" },
-      { label: "Join Network", href: "/network" },
+      // { label: "How It Works", href: "/process" },
+      // { label: "Join Network", href: "/network" },
       { label: "Contact", href: "/contact" },
     ]
   },
@@ -47,7 +47,7 @@ export default function Footer() {
             </h3>
           </div>
           <Link
-            href="/network"
+            href="/contact"
             className="group flex items-center gap-2 rounded-lg bg-gold-primary hover:bg-gold-light text-navy-dark px-6 py-3 font-inter font-bold text-xs uppercase tracking-widest transition-all shrink-0"
           >
             Join Now <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
@@ -67,7 +67,7 @@ export default function Footer() {
             <div className="flex flex-col gap-1.5 font-inter text-xs">
               <a href="mailto:contact@lexxesgroup.com" className="hover:text-gold-primary transition truncate">contact@lexxesgroup.com</a>
               <a href="tel:+919503862213" className="hover:text-gold-primary transition">+91 95038 62213</a>
-              <span className="text-slate-600">Nagpur, Maharashtra</span>
+              <span className="text-slate-600">Mumbai, Maharashtra</span>
             </div>
           </div>
 
@@ -96,7 +96,7 @@ export default function Footer() {
           <div className="flex items-center gap-2">
             <span>Built with</span>
             <Circle size={4} className="fill-gold-primary text-gold-primary" />
-            <span>in Nagpur</span>
+            <span>in Mumbai</span>
           </div>
           <div className="flex gap-4">
             <Link href="/privacy" className="hover:text-gold-primary transition-colors">Privacy</Link>

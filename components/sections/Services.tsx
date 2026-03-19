@@ -202,7 +202,7 @@ export default function ServicesSection() {
 
             <div className="flex flex-col sm:flex-row gap-4 shrink-0">
               <Link
-                href="/network"
+                href="/login"
                 className="group relative bg-gold-primary hover:bg-gold-light text-navy-dark px-8 py-4 rounded-xl font-inter font-bold text-sm text-center transition-all duration-300 shadow-lg shadow-gold-primary/25 flex items-center justify-center gap-2"
               >
                 Join Now

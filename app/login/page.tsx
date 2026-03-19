@@ -1,13 +1,15 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import { Mail, Lock, Eye, EyeOff, ArrowLeft, Loader2, User } from "lucide-react";
+import { useState, useEffect } from "react";import Link from "next/link";
+import { Mail, Lock, Eye, EyeOff, ArrowLeft, Loader2 } from "lucide-react";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [authMode, setAuthMode] = useState<"login" | "signup">("login");
+
+  useEffect(() => {
+    alert("🚧 This site is currently under construction. Some features may not work as expected.");
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,187 +18,116 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="relative min-h-screen flex items-center justify-center bg-navy-dark px-4 sm:px-6 pt-24 pb-16 overflow-hidden">
+    <main className="relative min-h-screen flex items-center justify-center bg-navy-dark px-4 sm:px-6 pt-8 pb-16 overflow-hidden selection:bg-gold-primary selection:text-navy-dark">
 
-      {/* ANIMATIONS */}
-      <style dangerouslySetInnerHTML={{__html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes fadeUpReveal {
           0% { opacity: 0; transform: translateY(30px); filter: blur(8px); }
           100% { opacity: 1; transform: translateY(0); filter: blur(0); }
         }
-        @keyframes shine {
-          100% { transform: translateX(100%); }
-        }
+        @keyframes shine { 100% { transform: translateX(100%); } }
       `}} />
 
-      {/* BACKGROUND */}
+      {/* Background */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-
-        <div className="hidden md:block absolute -top-[20%] -right-[10%] w-[80vw] max-w-[800px] h-[80vw] max-h-[800px] rounded-full border border-gold-primary/5" />
-
-        <div className="absolute top-0 right-[10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-gold-primary/10 blur-[120px] md:blur-[150px] rounded-full animate-pulse" />
-
-        <div className="absolute bottom-0 left-[10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-blue-600/5 blur-[120px] md:blur-[150px] rounded-full animate-pulse" />
-
+        <div className="absolute -top-[20%] -right-[10%] w-[80vw] max-w-[800px] h-[80vw] max-h-[800px] rounded-full border border-gold-primary/5" />
+        <div className="absolute -bottom-[20%] -left-[10%] w-[80vw] max-w-[800px] h-[80vw] max-h-[800px] rounded-full border border-gold-primary/5" />
+        <div className="absolute top-0 right-[10%] w-[500px] h-[500px] bg-gold-primary/10 blur-[150px] rounded-full animate-[pulse_8s_ease-in-out_infinite]" />
+        <div className="absolute bottom-0 left-[10%] w-[500px] h-[500px] bg-blue-600/5 blur-[150px] rounded-full animate-[pulse_12s_ease-in-out_infinite_reverse]" />
       </div>
 
-      {/* BACK BUTTON */}
-      <Link
-        href="/"
-        className="absolute top-6 left-4 md:top-8 md:left-12 z-20 flex items-center gap-2 md:gap-3 text-text-secondary hover:text-gold-primary transition text-xs md:text-sm group"
-      >
-        <div className="w-7 h-7 md:w-8 md:h-8 rounded-full border border-navy-border bg-navy-secondary/50 backdrop-blur-sm flex items-center justify-center group-hover:border-gold-primary/50">
-          <ArrowLeft size={14} />
+      {/* Back button */}
+      <Link href="/" className="absolute top-8 left-6 md:left-12 z-20 flex items-center gap-3 text-text-secondary hover:text-gold-primary transition font-inter text-sm group">
+        <div className="w-8 h-8 rounded-full border border-navy-border bg-navy-secondary/50 backdrop-blur-sm flex items-center justify-center group-hover:border-gold-primary/50 transition">
+          <ArrowLeft size={14} className="group-hover:-translate-x-0.5 transition-transform" />
         </div>
-        Back
+        Back to Home
       </Link>
 
-      {/* LOGIN CARD */}
+      {/* Card */}
       <div
-        className="relative z-10 w-full max-w-md opacity-0"
+        className="relative z-10 w-full max-w-[440px] opacity-0"
         style={{ animation: "fadeUpReveal 1s cubic-bezier(0.16,1,0.3,1) forwards" }}
       >
-        <div className="relative bg-navy-secondary/60 backdrop-blur-2xl border border-navy-border p-6 sm:p-10 rounded-3xl shadow-[0_30px_80px_rgba(0,0,0,0.6)] overflow-hidden">
+        <div className="relative bg-navy-secondary/60 backdrop-blur-2xl border border-navy-border p-8 sm:p-12 rounded-[2rem] shadow-[0_30px_80px_rgba(0,0,0,0.6)] overflow-hidden">
 
           <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gold-primary/50 to-transparent opacity-70" />
 
-          {/* HEADER */}
-          <div className="flex flex-col items-center text-center mb-6 sm:mb-8">
-
-            <Link href="/" className="flex items-baseline gap-1 mb-5">
-              <span className="font-playfair font-bold text-xl sm:text-2xl text-text-primary">Lexxes</span>
+          {/* Header */}
+          <div className="flex flex-col items-center text-center mb-10">
+            <Link href="/" className="flex items-baseline gap-1 mb-6 group">
+              <span className="font-playfair font-bold text-2xl text-text-primary group-hover:text-gold-primary transition">Lexxes</span>
               <span className="w-2 h-2 bg-gold-primary rounded-full" />
-              <span className="font-inter text-text-secondary tracking-[0.2em] uppercase text-[9px] sm:text-[10px] font-semibold">Group</span>
+              <span className="font-inter text-text-secondary ml-1 tracking-[0.2em] uppercase text-[10px] font-semibold">Group</span>
             </Link>
 
-            {/* TOGGLE */}
-            <div className="relative flex w-full max-w-[200px] sm:max-w-[240px] bg-navy-dark/50 border border-navy-border p-1 rounded-xl mb-5">
-
-              <div
-                className={`absolute inset-y-1 transition-all duration-300 bg-gold-primary rounded-lg w-[calc(50%-4px)] ${
-                  authMode === "signup"
-                    ? "translate-x-[calc(100%+4px)]"
-                    : "translate-x-0"
-                }`}
-              />
-
-              <button
-                onClick={() => setAuthMode("login")}
-                className={`relative z-10 w-1/2 py-2 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest ${
-                  authMode === "login" ? "text-navy-dark" : "text-text-secondary"
-                }`}
-              >
-                Sign In
-              </button>
-
-              <button
-                onClick={() => setAuthMode("signup")}
-                className={`relative z-10 w-1/2 py-2 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest ${
-                  authMode === "signup"
-                    ? "text-navy-dark"
-                    : "text-text-secondary"
-                }`}
-              >
-                Register
-              </button>
+            <div className="inline-flex items-center gap-3 mb-6 px-4 py-1.5 rounded-full border border-gold-primary/20 bg-gold-primary/5">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-primary opacity-75" />
+                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-gold-primary" />
+              </span>
+              <span className="font-inter text-[10px] font-bold tracking-[0.3em] text-gold-primary uppercase">Member Login</span>
             </div>
 
-            <h1 className="font-playfair text-2xl sm:text-3xl font-bold text-text-primary mb-2">
-              {authMode === "login" ? "Welcome Back." : "Create Account."}
-            </h1>
-
-            <p className="text-xs sm:text-sm text-text-secondary">
-              {authMode === "login"
-                ? "Access your member dashboard."
-                : "Join the Lexxes network."}
-            </p>
+            <h1 className="font-playfair text-3xl sm:text-4xl font-bold text-text-primary mb-3">Welcome Back.</h1>
+            <p className="font-inter text-sm text-text-secondary font-light">Sign in to access your Lexxes Group member dashboard.</p>
           </div>
 
-          {/* FORM */}
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
 
-            {/* NAME */}
-            {authMode === "signup" && (
-              <div className="flex flex-col gap-2">
-                <label className="text-[9px] sm:text-[10px] font-bold tracking-[0.2em] text-text-secondary uppercase">
-                  Full Name
-                </label>
-
-                <div className="relative">
-                  <User className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary" size={18} />
-
-                  <input
-                    type="text"
-                    placeholder="John Doe"
-                    className="w-full bg-navy-dark/40 border border-navy-border rounded-xl py-3 pl-12 pr-4 text-sm text-text-primary focus:outline-none focus:border-gold-primary/50 focus:ring-1 focus:ring-gold-primary/50"
-                  />
+            {/* Email */}
+            <div className="flex flex-col gap-2.5">
+              <label className="font-inter text-[10px] font-bold tracking-[0.2em] text-text-secondary uppercase pl-1">Email Address</label>
+              <div className="relative group">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary group-focus-within:text-gold-primary transition pointer-events-none">
+                  <Mail size={18} strokeWidth={1.5} />
                 </div>
-              </div>
-            )}
-
-            {/* EMAIL */}
-            <div className="flex flex-col gap-2">
-              <label className="text-[9px] sm:text-[10px] font-bold tracking-[0.2em] text-text-secondary uppercase">
-                Email Address
-              </label>
-
-              <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary" size={18} />
-
-                <input
-                  type="email"
-                  required
-                  placeholder="name@example.com"
-                  className="w-full bg-navy-dark/40 border border-navy-border rounded-xl py-3 pl-12 pr-4 text-sm text-text-primary focus:outline-none focus:border-gold-primary/50 focus:ring-1 focus:ring-gold-primary/50"
-                />
+                <input type="email" required placeholder="name@example.com"
+                  className="w-full bg-navy-dark/40 border border-navy-border rounded-xl py-4 pl-12 pr-4 text-sm text-text-primary placeholder:text-text-secondary/30 focus:outline-none focus:border-gold-primary/50 focus:bg-navy-dark/80 focus:ring-1 focus:ring-gold-primary/50 transition font-inter" />
               </div>
             </div>
 
-            {/* PASSWORD */}
-            <div className="flex flex-col gap-2">
-
-              <div className="flex justify-between text-[9px] sm:text-[10px]">
-                <label className="font-bold tracking-[0.2em] text-text-secondary uppercase">
-                  Password
-                </label>
-
-                {authMode === "login" && (
-                  <Link href="/forgot-password" className="text-gold-primary">
-                    Forgot?
-                  </Link>
-                )}
+            {/* Password */}
+            <div className="flex flex-col gap-2.5">
+              <div className="flex items-center justify-between pl-1 pr-1">
+                <label className="font-inter text-[10px] font-bold tracking-[0.2em] text-text-secondary uppercase">Password</label>
+                <Link href="/forgot-password" className="font-inter text-[10px] font-semibold text-gold-primary/80 hover:text-gold-light transition">
+                  Forgot Password?
+                </Link>
               </div>
-
-              <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary" size={18} />
-
-                <input
-                  type={showPassword ? "text" : "password"}
-                  required
-                  placeholder="••••••••"
-                  className="w-full bg-navy-dark/40 border border-navy-border rounded-xl py-3 pl-12 pr-12 text-sm text-text-primary focus:outline-none focus:border-gold-primary/50 focus:ring-1 focus:ring-gold-primary/50"
-                />
-
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-text-secondary hover:text-gold-primary"
-                >
-                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              <div className="relative group">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary group-focus-within:text-gold-primary transition pointer-events-none">
+                  <Lock size={18} strokeWidth={1.5} />
+                </div>
+                <input type={showPassword ? "text" : "password"} required placeholder="••••••••"
+                  className="w-full bg-navy-dark/40 border border-navy-border rounded-xl py-4 pl-12 pr-12 text-sm text-text-primary placeholder:text-text-secondary/30 focus:outline-none focus:border-gold-primary/50 focus:bg-navy-dark/80 focus:ring-1 focus:ring-gold-primary/50 transition font-inter tracking-wider" />
+                <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-text-secondary hover:text-gold-primary transition">
+                  {showPassword ? <EyeOff size={18} strokeWidth={1.5} /> : <Eye size={18} strokeWidth={1.5} />}
                 </button>
               </div>
             </div>
 
-            {/* SUBMIT */}
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="mt-2 w-full py-3 sm:py-4 bg-gold-primary text-navy-dark rounded-xl font-bold uppercase tracking-[0.2em] text-[11px] sm:text-xs hover:bg-gold-light transition"
+            {/* Submit */}
+            <button type="submit" disabled={isLoading}
+              className="group relative mt-4 flex items-center justify-center w-full py-4 bg-gold-primary text-navy-dark rounded-xl font-inter font-bold uppercase tracking-[0.2em] text-xs hover:bg-gold-light transition shadow-[0_4px_20px_rgba(201,168,76,0.15)] disabled:opacity-70 overflow-hidden"
             >
-              {isLoading ? <Loader2 className="animate-spin mx-auto" /> : authMode === "login" ? "Sign In" : "Create Account"}
+              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-[shine_1.5s_ease-in-out]" />
+              {isLoading ? <Loader2 size={18} className="animate-spin relative z-10" /> : <span className="relative z-10">Sign In</span>}
             </button>
 
           </form>
+
+          {/* Footer inside the card */}
+          <div className="mt-8 pt-6 border-t border-navy-border/60 text-center">
+            <p className="font-inter text-sm text-text-secondary font-light">
+              Not a member yet?{" "}
+              <Link href="/register" className="font-semibold text-gold-primary hover:text-gold-light transition border-b border-transparent hover:border-gold-light pb-0.5">
+                Register Now
+              </Link>
+            </p>
+          </div>
 
         </div>
       </div>

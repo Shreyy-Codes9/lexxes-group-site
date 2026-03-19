@@ -86,7 +86,7 @@ export default function PackagesSection() {
                   Starter
                 </span>
                 <h3 className="font-playfair text-3xl font-bold text-text-primary mt-1">
-                  ₹3,000
+                  ₹4,600
                 </h3>
                 <p className="font-inter text-sm text-text-secondary mt-1">
                   One-time membership fee
@@ -118,7 +118,7 @@ export default function PackagesSection() {
             </ul>
 
             <Link
-              href="/network"
+              href="/contact"
               className="mt-8 w-full border border-gold-primary/50 hover:border-gold-primary text-gold-primary hover:bg-gold-primary/10 py-3.5 rounded-xl font-inter font-bold text-sm text-center transition-all duration-300"
             >
               Get Started
@@ -182,7 +182,7 @@ export default function PackagesSection() {
               </ul>
 
               <Link
-                href="/network"
+                href="/contact"
                 className="relative z-10 mt-8 w-full bg-gold-primary hover:bg-gold-light text-navy-dark py-3.5 rounded-xl font-inter font-bold text-sm text-center transition-all duration-300 shadow-lg shadow-gold-primary/20 flex items-center justify-center gap-2 group/btn"
               >
                 Go Premium

@@ -2,10 +2,10 @@ import React from "react";
 import { ArrowRight } from "lucide-react";
 
 const STATS_DATA = [
-  { value: "₹3,000", label: "Starter Package" },
+  { value: "4,600", label: "Starter Package" },
   { value: "₹30,000", label: "Premium Package" },
   { value: "3", label: "Core Services" },
-  { value: "Nagpur", label: "Headquarters" },
+  { value: "Mumbai", label: "Headcenter" },
 ];
 
 export default function AboutSection() {
@@ -39,7 +39,7 @@ export default function AboutSection() {
 
       <div className="container-main relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-          
+
           {/* LEFT */}
           <header className="flex flex-col items-start text-left">
             <div className="inline-flex items-center gap-3 border border-gold-primary/30 bg-navy-secondary rounded-full px-5 py-2 mb-8">
@@ -72,7 +72,7 @@ export default function AboutSection() {
           <div className="flex flex-col justify-center h-full pt-4 lg:pt-24">
             <p className="font-inter text-xl md:text-2xl text-text-primary font-medium leading-snug">
               Lexxes Group exists to make that possible. We are a movement of
-              ambitious individuals in Nagpur and beyond.
+              ambitious individuals in Mumbai and beyond.
             </p>
 
             <div className="space-y-6 mt-8">
@@ -105,13 +105,17 @@ export default function AboutSection() {
                 </div>
               </div>
 
-              <button className="group inline-flex items-center gap-3 text-gold-primary font-bold text-sm uppercase tracking-widest mt-6 hover:text-gold-light transition-colors">
+              {/* Changed from <button> to <a> for better SEO and accessibility */}
+              <a
+                href="/about"
+                className="group inline-flex items-center gap-3 text-gold-primary font-bold text-sm uppercase tracking-widest mt-6 hover:text-gold-light transition-colors cursor-pointer"
+              >
                 Learn our story
                 <ArrowRight
                   size={18}
                   className="group-hover:translate-x-2 transition-transform"
                 />
-              </button>
+              </a>
             </div>
           </div>
         </div>
