@@ -19,6 +19,10 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Lexxes Group",
   description: "Real Estate • Tourism • Stock Market Courses",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({

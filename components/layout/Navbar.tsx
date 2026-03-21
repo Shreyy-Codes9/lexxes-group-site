@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { Menu, X, ChevronDown, User, LayoutDashboard, LogOut, Shield } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
@@ -25,7 +26,7 @@ export default function Navbar() {
 
   const profileRef = useRef<HTMLDivElement>(null);
 
-  const isLoggedIn = !!token || !!localStorage.getItem("lexxes_token");
+  const isLoggedIn = !!token || (typeof window !== "undefined" && !!localStorage.getItem("lexxes_token"));
   const storedUser = typeof window !== "undefined" ? localStorage.getItem("lexxes_user") : null;
   const currentUser = user || (storedUser ? JSON.parse(storedUser) : null);
   const isAdmin = currentUser?.role === "admin";
@@ -66,7 +67,6 @@ export default function Navbar() {
     router.push("/login");
   };
 
-  // Hide navbar on login, register, dashboard, admin pages
   if (["/login", "/register", "/dashboard", "/admin"].includes(pathname)) return null;
 
   return (
@@ -76,94 +76,107 @@ export default function Navbar() {
           ? "bg-navy-dark/95 backdrop-blur-xl border-b border-navy-border shadow-lg"
           : "bg-transparent"
       }`}>
-        <div className="max-w-7xl mx-auto px-5 md:px-8 h-full flex items-center justify-between relative">
+        <div className="max-w-7xl mx-auto px-5 md:px-8 h-full grid grid-cols-3 items-center">
 
-          {/* ── LOGO ── */}
-          <Link href="/" className="flex items-baseline gap-1.5 z-50 group">
-            <span className="font-playfair font-bold text-3xl md:text-4xl text-text-primary group-hover:text-gold-primary transition-colors">Lexxes</span>
-            <span className="w-2.5 h-2.5 md:w-3 md:h-3 bg-gold-primary rounded-full shadow-[0_0_8px_rgba(201,168,76,0.6)]" />
-            <span className="font-inter text-text-secondary ml-1.5 tracking-[0.25em] uppercase text-xs md:text-sm font-semibold">Group</span>
-          </Link>
+          {/* ── LOGO (Left Aligned) ── */}
+          <div className="flex-1 flex justify-start">
+            <Link href="/" className="flex items-center gap-2.5 z-50 group shrink-0">
+              <div className="relative w-8 h-8 md:w-13 md:h-13 shrink-0">
+                <Image
+                  src="/logo1.png"
+                  alt="Lexxes Group"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="flex items-baseline gap-1.5 whitespace-nowrap">
+                <span className="font-playfair font-bold text-2xl md:text-3xl lg:text-4xl text-text-primary group-hover:text-gold-primary transition-colors leading-none">Lexxes</span>
+                <span className="w-2 h-2 md:w-2.5 md:h-2.5 bg-gold-primary rounded-full shadow-[0_0_8px_rgba(201,168,76,0.6)]" />
+                <span className="font-inter text-text-secondary ml-1 tracking-[0.2em] uppercase text-[10px] md:text-xs font-semibold">Group</span>
+              </div>
+            </Link>
+          </div>
 
-          {/* ── DESKTOP NAV ── */}
-          <nav className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center">
-            <ul className="flex items-center gap-8">
+          {/* ── DESKTOP NAV (TRUE CENTER ABSOLUTE) ── */}
+          <nav className="hidden lg:flex items-center justify-center h-full">
+            <ul className="flex items-center h-full gap-6 xl:gap-10">
               {navLinks.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className={`font-inter font-semibold text-sm uppercase tracking-widest relative group transition-colors ${
+                <li key={link.name} className="flex items-center h-full">
+                  <Link href={link.href} className={`flex items-center h-full font-inter font-semibold text-[11px] xl:text-xs uppercase tracking-[0.2em] relative group transition-colors whitespace-nowrap ${
                     pathname === link.href ? "text-gold-primary" : "text-text-secondary hover:text-gold-primary"
                   }`}>
                     {link.name}
-                    <span className="absolute -bottom-2 left-0 w-0 h-[1.5px] bg-gold-primary transition-all duration-300 group-hover:w-full rounded-full" />
+                    <span className="absolute -bottom-1.5 left-0 w-0 h-[1.5px] bg-gold-primary transition-all duration-300 group-hover:w-full rounded-full" />
                   </Link>
                 </li>
               ))}
             </ul>
           </nav>
 
-          {/* ── RIGHT SIDE ── */}
-          <div className="hidden lg:flex items-center gap-3">
-            {isLoggedIn && currentUser ? (
-              <div className="relative" ref={profileRef}>
-                <button
-                  onClick={() => setIsProfileOpen(!isProfileOpen)}
-                  className="flex items-center gap-2.5 px-4 py-2 rounded-xl border border-gold-primary/30 bg-gold-primary/5 hover:border-gold-primary/60 hover:bg-gold-primary/10 transition-all"
-                >
-                  <div className="w-7 h-7 rounded-full bg-gold-primary/20 border border-gold-primary/40 flex items-center justify-center">
-                    {isAdmin ? <Shield size={13} className="text-gold-primary" /> : <User size={13} className="text-gold-primary" />}
-                  </div>
-                  <span className="font-inter text-sm font-semibold text-text-primary">{currentUser.name.split(" ")[0]}</span>
-                  <ChevronDown size={14} className={`text-text-secondary transition-transform ${isProfileOpen ? "rotate-180" : ""}`} />
-                </button>
-
-                <div className={`absolute top-[calc(100%+0.75rem)] right-0 w-52 transition-all duration-200 ${
-                  isProfileOpen ? "opacity-100 translate-y-0 visible" : "opacity-0 -translate-y-2 invisible"
-                }`}>
-                  <div className="bg-navy-secondary border border-navy-border rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] overflow-hidden">
-                    {/* User info */}
-                    <div className="px-4 py-3 border-b border-navy-border">
-                      <p className="font-inter text-xs font-bold text-white truncate">{currentUser.name}</p>
-                      <p className="font-inter text-[10px] text-text-secondary truncate">{currentUser.email}</p>
-                      {isAdmin && (
-                        <span className="inline-block mt-1 font-inter text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-gold-primary/10 text-gold-primary border border-gold-primary/20">
-                          Admin
-                        </span>
-                      )}
+          {/* ── RIGHT SIDE (Right Aligned Balanced) ── */}
+          <div className="flex-1 flex justify-end items-center gap-3">
+            <div className="hidden lg:flex items-center justify-end">
+              {isLoggedIn && currentUser ? (
+                <div className="relative" ref={profileRef}>
+                  <button
+                    onClick={() => setIsProfileOpen(!isProfileOpen)}
+                    className="flex items-center gap-2.5 px-4 py-2 rounded-xl border border-gold-primary/30 bg-gold-primary/5 hover:border-gold-primary/60 hover:bg-gold-primary/10 transition-all"
+                  >
+                    <div className="w-7 h-7 rounded-full bg-gold-primary/20 border border-gold-primary/40 flex items-center justify-center shrink-0">
+                      {isAdmin ? <Shield size={13} className="text-gold-primary" /> : <User size={13} className="text-gold-primary" />}
                     </div>
-                    <div className="p-1">
-                      {isAdmin ? (
-                        <Link href="/admin" className="flex items-center gap-3 px-4 py-3 rounded-xl font-inter text-sm text-text-secondary hover:text-gold-primary hover:bg-gold-primary/5 transition-colors">
-                          <Shield size={15} />
-                          Admin Panel
-                        </Link>
-                      ) : (
-                        <Link href="/dashboard" className="flex items-center gap-3 px-4 py-3 rounded-xl font-inter text-sm text-text-secondary hover:text-gold-primary hover:bg-gold-primary/5 transition-colors">
-                          <LayoutDashboard size={15} />
-                          Dashboard
-                        </Link>
-                      )}
-                      <button onClick={handleLogout} className="flex items-center gap-3 px-4 py-3 rounded-xl font-inter text-sm text-red-400/80 hover:text-red-400 hover:bg-red-400/5 transition-colors w-full">
-                        <LogOut size={15} />
-                        Sign Out
-                      </button>
+                    <span className="font-inter text-sm font-semibold text-text-primary whitespace-nowrap">{currentUser.name.split(" ")[0]}</span>
+                    <ChevronDown size={14} className={`text-text-secondary transition-transform shrink-0 ${isProfileOpen ? "rotate-180" : ""}`} />
+                  </button>
+
+                  <div className={`absolute top-[calc(100%+0.75rem)] right-0 w-52 transition-all duration-200 ${
+                    isProfileOpen ? "opacity-100 translate-y-0 visible" : "opacity-0 -translate-y-2 invisible"
+                  }`}>
+                    <div className="bg-navy-secondary border border-navy-border rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] overflow-hidden">
+                      <div className="px-4 py-3 border-b border-navy-border">
+                        <p className="font-inter text-xs font-bold text-white truncate">{currentUser.name}</p>
+                        <p className="font-inter text-[10px] text-text-secondary truncate">{currentUser.email}</p>
+                        {isAdmin && (
+                          <span className="inline-block mt-1 font-inter text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-gold-primary/10 text-gold-primary border border-gold-primary/20">
+                            Admin
+                          </span>
+                        )}
+                      </div>
+                      <div className="p-1">
+                        {isAdmin ? (
+                          <Link href="/admin" className="flex items-center gap-3 px-4 py-3 rounded-xl font-inter text-sm text-text-secondary hover:text-gold-primary hover:bg-gold-primary/5 transition-colors">
+                            <Shield size={15} />
+                            Admin Panel
+                          </Link>
+                        ) : (
+                          <Link href="/dashboard" className="flex items-center gap-3 px-4 py-3 rounded-xl font-inter text-sm text-text-secondary hover:text-gold-primary hover:bg-gold-primary/5 transition-colors">
+                            <LayoutDashboard size={15} />
+                            Dashboard
+                          </Link>
+                        )}
+                        <button onClick={handleLogout} className="flex items-center gap-3 px-4 py-3 rounded-xl font-inter text-sm text-red-400/80 hover:text-red-400 hover:bg-red-400/5 transition-colors w-full">
+                          <LogOut size={15} />
+                          Sign Out
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ) : (
-              <Link href="/login" className="px-6 py-2.5 border border-gold-primary text-gold-primary rounded-xl font-inter font-bold uppercase tracking-widest text-sm hover:bg-gold-primary hover:text-navy-dark transition-colors shadow-lg">
-                Member Login
-              </Link>
-            )}
-          </div>
+              ) : (
+                <Link href="/login" className="px-6 py-2.5 border border-gold-primary text-gold-primary rounded-xl font-inter font-bold uppercase tracking-widest text-[11px] hover:bg-gold-primary hover:text-navy-dark transition-colors shadow-lg whitespace-nowrap">
+                  Member Login
+                </Link>
+              )}
+            </div>
 
-          {/* ── MOBILE TOGGLE ── */}
-          <button
-            className="lg:hidden z-50 p-2.5 border border-navy-border bg-navy-secondary/50 backdrop-blur-md rounded-xl hover:bg-navy-border transition-colors"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X size={24} className="text-gold-primary" /> : <Menu size={24} className="text-text-primary" />}
-          </button>
+            {/* ── MOBILE TOGGLE (Vertical alignment fix) ── */}
+            <button
+              className="lg:hidden z-50 p-2 border border-navy-border bg-navy-secondary/50 backdrop-blur-md rounded-xl hover:bg-navy-border transition-colors flex items-center justify-center"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={22} className="text-gold-primary" /> : <Menu size={22} className="text-text-primary" />}
+            </button>
+          </div>
         </div>
       </header>
 
@@ -171,7 +184,6 @@ export default function Navbar() {
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-[60] bg-navy-dark/98 backdrop-blur-xl lg:hidden">
           <nav className="flex flex-col h-full pt-28 pb-10 px-8 overflow-y-auto">
-
             <div className="flex flex-col gap-6">
               {navLinks.map((link) => (
                 <Link key={link.name} href={link.href} className="font-playfair text-2xl text-text-primary border-b border-navy-border pb-4 hover:text-gold-primary transition-colors">
@@ -183,7 +195,6 @@ export default function Navbar() {
             <div className="mt-auto pt-10 flex flex-col gap-3">
               {isLoggedIn && currentUser ? (
                 <>
-                  {/* User info */}
                   <div className="px-4 py-3 rounded-xl bg-navy-secondary border border-navy-border mb-1">
                     <p className="font-inter text-sm font-bold text-white">{currentUser.name}</p>
                     <p className="font-inter text-[10px] text-text-secondary">{currentUser.email}</p>

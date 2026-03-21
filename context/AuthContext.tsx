@@ -10,6 +10,7 @@ interface User {
   package: string;
   referralCode: string;
   role: string;
+  isActive: boolean;
 }
 
 interface AuthContextType {
@@ -39,7 +40,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Load from localStorage on mount
   useEffect(() => {
     const storedToken = localStorage.getItem("lexxes_token");
     const storedUser = localStorage.getItem("lexxes_user");
