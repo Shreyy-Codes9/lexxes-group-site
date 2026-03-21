@@ -1,9 +1,9 @@
- "use client";
+"use client";
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, TrendingUp, BookOpen, Users, BarChart2, ShieldCheck, ChevronLeft, ChevronRight, Play, Clock, Star } from "lucide-react";
+import { ArrowRight, TrendingUp, BookOpen, Users, BarChart2, ShieldCheck, ChevronLeft, ChevronRight, Play, Clock, Star, Phone } from "lucide-react";
 
 const heroSlides = [
   { img: "/heroimg/stock.png", label: "Stock Market Courses", sub: "Beginner to Advanced" },
@@ -79,7 +79,7 @@ export default function StockMarketPage() {
   const next = useCallback(() => setCurrent((p) => (p + 1) % heroSlides.length), []);
 
   return (
-    <main className="min-h-screen pt-15  bg-[#F8F7F5] text-[#1a1a2e] overflow-x-hidden selection:bg-navy-dark selection:text-white">
+    <main className="min-h-screen pt-11 bg-[#F8F7F5] text-[#1a1a2e] overflow-x-hidden selection:bg-navy-dark selection:text-white">
 
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes fadeUpReveal {
@@ -99,25 +99,20 @@ export default function StockMarketPage() {
           HERO CAROUSEL
       ══════════════════════════════════════ */}
       <section className="relative h-screen min-h-[640px] overflow-hidden">
-
         {heroSlides.map((slide, i) => (
           <div key={i} className={`absolute inset-0 transition-opacity duration-1000 ${current === i ? "opacity-100 z-10" : "opacity-0 z-0"}`}>
             <Image src={slide.img} alt={slide.label} fill priority={i === 0}
               className={`object-cover transition-transform ease-out ${current === i ? "scale-[1.05] duration-[12000ms]" : "scale-100 duration-1000"}`}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e]/95 via-[#0a0f1e]/40 to-[#0a0f1e]/10" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1e]/80 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/95 via-navy-dark/40 to-navy-dark/10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/80 via-transparent to-transparent" />
           </div>
         ))}
 
-        {/* Navbar spacer */}
         <div className="relative z-20 h-20" />
 
-        {/* Content */}
         <div className="relative z-20 h-[calc(100%-5rem)] flex flex-col justify-end px-6 md:px-12 lg:px-20 pb-16 md:pb-24">
           <div key={`slide-${current}`}>
-
-            {/* Company name block */}
             <div className="fade-up mb-5">
               <p className="font-inter text-xs font-bold tracking-[0.4em] text-gold-primary/70 uppercase mb-2">
                 Lexxes Group Presents
@@ -166,7 +161,6 @@ export default function StockMarketPage() {
               </a>
             </div>
 
-            {/* Controls */}
             <div className="flex items-center gap-5">
               <button onClick={prev} className="w-9 h-9 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm flex items-center justify-center hover:border-gold-primary/50 transition text-white/60 hover:text-gold-primary">
                 <ChevronLeft size={16} />
@@ -188,8 +182,7 @@ export default function StockMarketPage() {
           </div>
         </div>
 
-        {/* Stats strip */}
-        <div className="absolute bottom-0 right-0 z-20 hidden lg:flex items-center gap-10 px-10 py-5 bg-[#0a0f1e]/70 backdrop-blur-xl border-t border-l border-white/5 rounded-tl-2xl">
+        <div className="absolute bottom-0 right-0 z-20 hidden lg:flex items-center gap-10 px-10 py-5 bg-navy-dark/70 backdrop-blur-xl border-t border-l border-white/5 rounded-tl-2xl">
           {[
             { value: "3", label: "Courses" },
             { value: "2,400+", label: "Students" },
@@ -206,7 +199,8 @@ export default function StockMarketPage() {
       {/* ══════════════════════════════════════
           LIVE MENTORSHIP HIGHLIGHT
       ══════════════════════════════════════ */}
-      <section className="py-16 bg-[#1a1a2e] text-white">
+      {/* Set to Navy-Dark theme */}
+      <section className="py-16 bg-navy-dark text-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div>
@@ -236,14 +230,25 @@ export default function StockMarketPage() {
       {/* ══════════════════════════════════════
           COURSES
       ══════════════════════════════════════ */}
-      <section id="courses" className="py-24 bg-[#F8F7F5]">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
+      <section id="courses" className="relative py-24 bg-[#F8F7F5]">
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+          <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid-pattern-tred" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-gold-primary/30" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid-pattern-tred)" />
+          </svg>
+        </div>
 
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8">
           <div className="mb-14">
             <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-3 font-bold flex items-center gap-2">
               <span className="w-4 h-px bg-gold-primary/50" /> Our Courses
             </p>
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-[#1a1a2e]">
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-navy-dark">
               Learn at Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-primary to-amber-600 italic">Own Pace.</span>
             </h2>
           </div>
@@ -251,7 +256,6 @@ export default function StockMarketPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {courses.map((course) => (
               <div key={course.title} className={`group relative flex flex-col bg-white rounded-2xl border ${course.color} shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 overflow-hidden`}>
-
                 {course.popular && (
                   <div className="absolute top-5 right-5 z-10 px-3 py-1 bg-gold-primary text-navy-dark font-inter font-bold text-[9px] uppercase tracking-widest rounded-full">
                     Most Popular
@@ -259,25 +263,16 @@ export default function StockMarketPage() {
                 )}
 
                 <div className="p-7 flex-1 flex flex-col">
-
-                  {/* Level badge */}
                   <span className={`inline-block w-fit px-3 py-1 rounded-lg border text-[9px] font-bold uppercase tracking-widest font-inter mb-4 ${course.badge}`}>
                     {course.level}
                   </span>
-
-                  <h3 className="font-playfair text-xl font-bold text-[#1a1a2e] mb-3">{course.title}</h3>
+                  <h3 className="font-playfair text-xl font-bold text-navy-dark mb-3">{course.title}</h3>
                   <p className="font-inter text-sm text-slate-500 font-light leading-relaxed mb-5">{course.desc}</p>
-
-                  {/* Topics */}
                   <div className="flex flex-wrap gap-2 mb-6">
                     {course.topics.map((t) => (
-                      <span key={t} className="font-inter text-[9px] font-bold uppercase tracking-wider text-slate-500 bg-slate-100 px-2 py-1 rounded-md">
-                        {t}
-                      </span>
+                      <span key={t} className="font-inter text-[9px] font-bold uppercase tracking-wider text-slate-500 bg-slate-100 px-2 py-1 rounded-md">{t}</span>
                     ))}
                   </div>
-
-                  {/* Meta */}
                   <div className="flex items-center gap-4 mb-6 mt-auto pt-5 border-t border-slate-100">
                     <div className="flex items-center gap-1.5">
                       <Clock size={13} className="text-slate-400" />
@@ -289,13 +284,12 @@ export default function StockMarketPage() {
                     </div>
                     <div className="flex items-center gap-1.5">
                       <Star size={13} className="text-amber-400 fill-amber-400" />
-                      <span className="font-inter text-xs font-bold text-[#1a1a2e]">{course.rating}</span>
+                      <span className="font-inter text-xs font-bold text-navy-dark">{course.rating}</span>
                     </div>
                   </div>
-
                   <div className="flex items-center justify-between">
                     <span className="font-inter text-xs text-slate-400">{course.students} students</span>
-                    <Link href="/register" className="group/btn flex items-center gap-2 font-inter text-xs font-bold uppercase tracking-widest text-[#1a1a2e] hover:text-gold-primary transition">
+                    <Link href="/register" className="group/btn flex items-center gap-2 font-inter text-xs font-bold uppercase tracking-widest text-navy-dark hover:text-gold-primary transition">
                       Enroll Now <ArrowRight size={12} className="group-hover/btn:translate-x-0.5 transition-transform" />
                     </Link>
                   </div>
@@ -316,13 +310,24 @@ export default function StockMarketPage() {
       {/* ══════════════════════════════════════
           WHY LEARN WITH US
       ══════════════════════════════════════ */}
-      <section className="py-24 bg-white border-y border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
+      <section className="relative py-24 bg-white border-y border-slate-100">
+        <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
+          <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid-pattern-why-tred" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-gold-primary/30" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid-pattern-why-tred)" />
+          </svg>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8">
           <div className="mb-14 text-center">
             <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-3 font-bold flex items-center justify-center gap-2">
               <span className="w-8 h-px bg-gold-primary/40" /> Why Tred India <span className="w-8 h-px bg-gold-primary/40" />
             </p>
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-[#1a1a2e]">
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-navy-dark">
               Why Learn <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-primary to-amber-600 italic">With Us?</span>
             </h2>
           </div>
@@ -332,7 +337,7 @@ export default function StockMarketPage() {
                 <div className="w-12 h-12 rounded-2xl bg-gold-primary/10 border border-gold-primary/20 flex items-center justify-center mx-auto mb-5 group-hover:bg-gold-primary/20 transition">
                   <item.icon size={20} className="text-gold-primary" />
                 </div>
-                <h3 className="font-playfair text-lg font-bold text-[#1a1a2e] mb-2">{item.title}</h3>
+                <h3 className="font-playfair text-lg font-bold text-navy-dark mb-2">{item.title}</h3>
                 <p className="font-inter text-sm text-slate-500 font-light leading-relaxed">{item.desc}</p>
               </div>
             ))}
@@ -343,11 +348,22 @@ export default function StockMarketPage() {
       {/* ══════════════════════════════════════
           HOW IT WORKS
       ══════════════════════════════════════ */}
-      <section className="py-24 bg-[#F8F7F5]">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
+      <section className="relative py-24 bg-[#F8F7F5]">
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+          <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid-pattern-how-tred" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-gold-primary/30" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid-pattern-how-tred)" />
+          </svg>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8">
           <div className="mb-14">
             <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-3 font-bold">Process</p>
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-[#1a1a2e]">
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-navy-dark">
               From Zero to <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-primary to-amber-600 italic">Confident Trader.</span>
             </h2>
           </div>
@@ -358,7 +374,7 @@ export default function StockMarketPage() {
                   {step.step}
                 </div>
                 <p className="font-inter text-[10px] font-bold uppercase tracking-widest text-gold-primary/60 mb-3">{step.step}</p>
-                <h3 className="font-playfair text-lg font-bold text-[#1a1a2e] mb-2">{step.title}</h3>
+                <h3 className="font-playfair text-lg font-bold text-navy-dark mb-2">{step.title}</h3>
                 <p className="font-inter text-sm text-slate-500 font-light leading-relaxed">{step.desc}</p>
               </div>
             ))}
@@ -369,7 +385,8 @@ export default function StockMarketPage() {
       {/* ══════════════════════════════════════
           CTA
       ══════════════════════════════════════ */}
-      <section className="py-28 bg-[#1a1a2e] relative overflow-hidden">
+      {/* Set to Navy-Dark theme */}
+      <section className="py-28 bg-navy-dark relative overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-[60vw] h-[300px] bg-gold-primary/8 blur-[120px] rounded-full" />
         </div>
@@ -389,6 +406,7 @@ export default function StockMarketPage() {
               <ArrowRight size={14} className="relative z-10 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link href="/contact" className="flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white px-10 py-4 font-inter font-bold text-xs uppercase tracking-widest transition rounded-xl">
+              <Phone size={14} />
               Talk to a Mentor
             </Link>
           </div>

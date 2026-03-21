@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Mail, Phone, MapPin, MessageCircle, Send, Loader2, Instagram, Youtube, Facebook } from "lucide-react";
+import { ArrowRight, Mail, Phone, MapPin, MessageCircle, Send, Loader2, Instagram } from "lucide-react";
 
 export default function ContactPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -111,56 +111,30 @@ export default function ContactPage() {
           {/* BOTTOM — Contact info (Secondary Info) */}
           <div className="order-2 lg:order-1 flex flex-col items-center gap-12 text-center">
 
-            {/* Contact info grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+            {/* Combined Contact Info Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-12 gap-x-8 w-full max-w-3xl">
               {[
-                { icon: Phone, label: "Phone", value: "+91 95038 62213", href: "tel:+919503862213" },
-                { icon: Mail, label: "Email", value: "contact@lexxesgroup.com", href: "mailto:contact@lexxesgroup.com" },
-                { icon: MapPin, label: "Location", value: "Mumbai, India", href: "#" },
+                { icon: Phone, label: "Phone", value: "+91 92703 12260", href: "tel:+919270312260", color: "text-gold-primary", bg: "bg-gold-primary/10", border: "border-gold-primary/20" },
+                { icon: Mail, label: "Email", value: "contact@lexxesgroup.com", href: "mailto:contact@lexxesgroup.com", color: "text-gold-primary", bg: "bg-gold-primary/10", border: "border-gold-primary/20" },
+                { icon: MapPin, label: "Location", value: "Mumbai, India", href: "#", color: "text-gold-primary", bg: "bg-gold-primary/10", border: "border-gold-primary/20" },
+                { icon: Instagram, label: "Instagram", value: "@lexxesgroup", href: "https://www.instagram.com/lexxes_group?utm_source=qr&igsh=MXhjZ3hmcXN6azV2ag==", color: "text-pink-500", bg: "bg-pink-500/10", border: "border-pink-500/20" },
+                { icon: MessageCircle, label: "WhatsApp", value: "Chat with us", href: "https://chat.whatsapp.com/FYKfSuDs99cL7wepIadYoA", color: "text-[#25D366]", bg: "bg-[#25D366]/10", border: "border-[#25D366]/20" },
               ].map((item) => (
-                <a key={item.label} href={item.href} className="group flex flex-col items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-gold-primary/10 border border-gold-primary/20 flex items-center justify-center group-hover:bg-gold-primary/20 transition">
-                    <item.icon size={16} className="text-gold-primary" />
+                <a key={item.label} href={item.href} target={item.href.startsWith('http') ? "_blank" : undefined} rel="noreferrer" className="group flex flex-col items-center gap-3">
+                  <div className={`w-12 h-12 rounded-2xl ${item.bg} border ${item.border} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                    <item.icon size={20} className={item.color} />
                   </div>
                   <div>
-                    <p className="font-inter text-[10px] uppercase tracking-widest text-text-secondary/50 mb-0.5">{item.label}</p>
-                    <p className="font-inter text-sm text-text-primary group-hover:text-gold-primary transition">{item.value}</p>
+                    <p className="font-inter text-[10px] uppercase tracking-widest text-text-secondary/50 mb-1">{item.label}</p>
+                    <p className="font-inter text-sm text-text-primary group-hover:text-gold-primary transition flex items-center justify-center gap-1">
+                      {item.value} {item.label === "WhatsApp" && <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />}
+                    </p>
                   </div>
                 </a>
               ))}
             </div>
 
-            {/* WhatsApp Center */}
-            <a href="https://wa.me/919503862213?text=Hi%20Lexxes%20Group%2C%20I%20want%20to%20know%20more."
-              target="_blank" rel="noreferrer"
-              className="group flex flex-col items-center gap-3 w-fit"
-            >
-              <div className="w-10 h-10 rounded-xl bg-[#25D366]/10 border border-[#25D366]/20 flex items-center justify-center group-hover:bg-[#25D366]/20 transition">
-                <MessageCircle size={16} className="text-[#25D366]" />
-              </div>
-              <p className="font-inter text-sm text-[#25D366] group-hover:text-[#25D366]/80 transition flex items-center gap-1.5">
-                Chat on WhatsApp <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
-              </p>
-            </a>
-
-            {/* Socials Center */}
-            <div className="flex flex-col items-center gap-5">
-              <div className="w-20 h-px bg-navy-border" />
-              <div className="flex items-center gap-4">
-                {[
-                  { icon: Instagram, href: "https://instagram.com/lexxesgroup", label: "Instagram" },
-                  { icon: Youtube, href: "https://youtube.com/@lexxesgroup", label: "YouTube" },
-                  { icon: Facebook, href: "https://facebook.com/lexxesgroup", label: "Facebook" },
-                ].map((s) => (
-                  <a key={s.label} href={s.href} target="_blank" rel="noreferrer"
-                    className="w-10 h-10 rounded-xl bg-navy-secondary border border-navy-border flex items-center justify-center hover:border-gold-primary/40 hover:bg-gold-primary/5 transition group"
-                    title={s.label}
-                  >
-                    <s.icon size={15} className="text-text-secondary group-hover:text-gold-primary transition" />
-                  </a>
-                ))}
-              </div>
-            </div>
+            <div className="w-24 h-px bg-gradient-to-r from-transparent via-navy-border to-transparent" />
 
           </div>
 

@@ -66,7 +66,7 @@ export default function Footer() {
             </Link>
             <div className="flex flex-col gap-1.5 font-inter text-xs">
               <a href="mailto:contact@lexxesgroup.com" className="hover:text-gold-primary transition truncate">contact@lexxesgroup.com</a>
-              <a href="tel:+919503862213" className="hover:text-gold-primary transition">+91 95038 62213</a>
+              <a href="tel:+9270312260" className="hover:text-gold-primary transition">+91 92703 12260</a>
               <span className="text-slate-600">Mumbai, Maharashtra</span>
             </div>
           </div>

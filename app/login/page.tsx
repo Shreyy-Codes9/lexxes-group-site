@@ -1,21 +1,27 @@
 "use client";
 
-import { useState, useEffect } from "react";import Link from "next/link";
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Mail, Lock, Eye, EyeOff, ArrowLeft, Loader2 } from "lucide-react";
+import { useAuth } from "../../context/AuthContext";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  useEffect(() => {
-    alert("🚧 This site is currently under construction. Some features may not work as expected.");
-  }, []);
+  const { login, isLoading, error } = useAuth();
+  const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setTimeout(() => setIsLoading(false), 2000);
-  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  const result = await login(email, password);
+  if (result) {
+    result.role === "admin" ? router.push("/admin") : router.push("/dashboard");
+  }
+};
 
   return (
     <main className="relative min-h-screen flex items-center justify-center bg-navy-dark px-4 sm:px-6 pt-8 pb-16 overflow-hidden selection:bg-gold-primary selection:text-navy-dark">
@@ -84,8 +90,14 @@ export default function LoginPage() {
                 <div className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary group-focus-within:text-gold-primary transition pointer-events-none">
                   <Mail size={18} strokeWidth={1.5} />
                 </div>
-                <input type="email" required placeholder="name@example.com"
-                  className="w-full bg-navy-dark/40 border border-navy-border rounded-xl py-4 pl-12 pr-4 text-sm text-text-primary placeholder:text-text-secondary/30 focus:outline-none focus:border-gold-primary/50 focus:bg-navy-dark/80 focus:ring-1 focus:ring-gold-primary/50 transition font-inter" />
+                <input
+                  type="email"
+                  required
+                  placeholder="name@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full bg-navy-dark/40 border border-navy-border rounded-xl py-4 pl-12 pr-4 text-sm text-text-primary placeholder:text-text-secondary/30 focus:outline-none focus:border-gold-primary/50 focus:bg-navy-dark/80 focus:ring-1 focus:ring-gold-primary/50 transition font-inter"
+                />
               </div>
             </div>
 
@@ -101,17 +113,30 @@ export default function LoginPage() {
                 <div className="absolute left-4 top-1/2 -translate-y-1/2 text-text-secondary group-focus-within:text-gold-primary transition pointer-events-none">
                   <Lock size={18} strokeWidth={1.5} />
                 </div>
-                <input type={showPassword ? "text" : "password"} required placeholder="••••••••"
-                  className="w-full bg-navy-dark/40 border border-navy-border rounded-xl py-4 pl-12 pr-12 text-sm text-text-primary placeholder:text-text-secondary/30 focus:outline-none focus:border-gold-primary/50 focus:bg-navy-dark/80 focus:ring-1 focus:ring-gold-primary/50 transition font-inter tracking-wider" />
+                <input
+                  type={showPassword ? "text" : "password"}
+                  required
+                  placeholder="••••••••"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full bg-navy-dark/40 border border-navy-border rounded-xl py-4 pl-12 pr-12 text-sm text-text-primary placeholder:text-text-secondary/30 focus:outline-none focus:border-gold-primary/50 focus:bg-navy-dark/80 focus:ring-1 focus:ring-gold-primary/50 transition font-inter tracking-wider"
+                />
                 <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-4 top-1/2 -translate-y-1/2 text-text-secondary hover:text-gold-primary transition">
                   {showPassword ? <EyeOff size={18} strokeWidth={1.5} /> : <Eye size={18} strokeWidth={1.5} />}
                 </button>
               </div>
             </div>
 
+            {/* Error message */}
+            {error && (
+              <p className="font-inter text-xs text-red-400 text-center bg-red-400/10 border border-red-400/20 rounded-xl py-2.5 px-4">
+                {error}
+              </p>
+            )}
+
             {/* Submit */}
             <button type="submit" disabled={isLoading}
-              className="group relative mt-4 flex items-center justify-center w-full py-4 bg-gold-primary text-navy-dark rounded-xl font-inter font-bold uppercase tracking-[0.2em] text-xs hover:bg-gold-light transition shadow-[0_4px_20px_rgba(201,168,76,0.15)] disabled:opacity-70 overflow-hidden"
+              className="group relative mt-2 flex items-center justify-center w-full py-4 bg-gold-primary text-navy-dark rounded-xl font-inter font-bold uppercase tracking-[0.2em] text-xs hover:bg-gold-light transition shadow-[0_4px_20px_rgba(201,168,76,0.15)] disabled:opacity-70 overflow-hidden"
             >
               <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-[shine_1.5s_ease-in-out]" />
               {isLoading ? <Loader2 size={18} className="animate-spin relative z-10" /> : <span className="relative z-10">Sign In</span>}
@@ -119,7 +144,7 @@ export default function LoginPage() {
 
           </form>
 
-          {/* Footer inside the card */}
+          {/* Footer */}
           <div className="mt-8 pt-6 border-t border-navy-border/60 text-center">
             <p className="font-inter text-sm text-text-secondary font-light">
               Not a member yet?{" "}

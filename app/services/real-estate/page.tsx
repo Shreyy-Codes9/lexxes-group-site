@@ -3,19 +3,19 @@
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, MapPin, Building2, TrendingUp, ShieldCheck, Users, ChevronLeft, ChevronRight, Check, Star, Phone } from "lucide-react";
+import { ArrowRight, MapPin, Building2, TrendingUp, ShieldCheck, Users, ChevronLeft, ChevronRight, Phone } from "lucide-react";
 
 const heroSlides = [
-  { img: "/heroimg/realestate.png", place: "Mumbai, Maharashtra", label: "Bank Auction Properties" },
-  { img: "/heroimg/realestate.png", place: "Pune, Maharashtra", label: "Premium Listings" },
-  { img: "/heroimg/realestate.png", place: "Mumbai, Maharashtra", label: "Investment Consultation" },
+  { img: "/pageimages/realestate/heroimg.png", place: "Nagpur, Maharashtra", label: "Bank Auction Properties" },
+  { img: "/pageimages/realestate/heroimg2.png", place: "Pune, Maharashtra", label: "Premium Listings" },
+  { img: "/pageimages/realestate/heroimg3.png", place: "Mumbai, Maharashtra", label: "Investment Consultation" },
 ];
 
 const properties = [
   {
-    img: "/heroimg/realestate.png",
+    img: "/pageimages/realestate/product1.png",
     title: "3BHK Bank Auction Flat",
-    location: "Mumbai, Maharashtra",
+    location: "Nagpur, Maharashtra",
     price: "₹28,00,000",
     original: "₹45,00,000",
     discount: "38% below market",
@@ -23,9 +23,9 @@ const properties = [
     details: ["1,200 sq ft", "3 BHK", "Ready to Move", "2nd Floor"],
   },
   {
-    img: "/heroimg/realestate.png",
+    img: "/pageimages/realestate/product2.png",
     title: "Premium 2BHK Apartment",
-    location: "Wardha Road, Mumbai",
+    location: "Wardha Road, Nagpur",
     price: "₹42,00,000",
     original: null,
     discount: null,
@@ -33,9 +33,9 @@ const properties = [
     details: ["950 sq ft", "2 BHK", "New Construction", "Gated Society"],
   },
   {
-    img: "/heroimg/realestate.png",
+    img: "/pageimages/realestate/product3.png",
     title: "Commercial Office Space",
-    location: "Civil Lines, Mumbai",
+    location: "Civil Lines, Nagpur",
     price: "₹65,00,000",
     original: "₹85,00,000",
     discount: "24% below market",
@@ -43,9 +43,9 @@ const properties = [
     details: ["2,100 sq ft", "Commercial", "Ground Floor", "Main Road"],
   },
   {
-    img: "/heroimg/realestate.png",
+    img: "/pageimages/realestate/product4.png",
     title: "Residential Plot",
-    location: "Hingna, Mumbai",
+    location: "Hingna, Nagpur",
     price: "₹18,00,000",
     original: null,
     discount: null,
@@ -53,9 +53,9 @@ const properties = [
     details: ["1,800 sq ft", "Plot", "RERA Approved", "Clear Title"],
   },
   {
-    img: "/heroimg/realestate.png",
+    img: "/pageimages/realestate/product5.png",
     title: "4BHK Bank Auction Villa",
-    location: "Amravati Road, Mumbai",
+    location: "Amravati Road, Nagpur",
     price: "₹55,00,000",
     original: "₹90,00,000",
     discount: "39% below market",
@@ -63,9 +63,9 @@ const properties = [
     details: ["2,800 sq ft", "4 BHK", "Independent Villa", "Corner Plot"],
   },
   {
-    img: "/heroimg/realestate.png",
+    img: "/pageimages/realestate/product6.png",
     title: "Studio Apartment",
-    location: "Dharampeth, Mumbai",
+    location: "Dharampeth, Nagpur",
     price: "₹22,00,000",
     original: null,
     discount: null,
@@ -125,26 +125,23 @@ export default function RealEstatePage() {
       {/* ══════════════════════════════════════
           HERO CAROUSEL
       ══════════════════════════════════════ */}
-      <section className="relative  h-screen min-h-[640px] overflow-hidden">
+      <section className="relative h-screen min-h-[640px] overflow-hidden">
 
         {heroSlides.map((slide, i) => (
           <div key={i} className={`absolute inset-0 transition-opacity duration-1000 ${current === i ? "opacity-100 z-10" : "opacity-0 z-0"}`}>
             <Image src={slide.img} alt={slide.place} fill priority={i === 0}
               className={`object-cover transition-transform ease-out ${current === i ? "scale-[1.05] duration-[12000ms]" : "scale-100 duration-1000"}`}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e]/95 via-[#0a0f1e]/40 to-[#0a0f1e]/10" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1e]/80 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/95 via-navy-dark/40 to-navy-dark/10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/80 via-transparent to-transparent" />
           </div>
         ))}
 
-        {/* Navbar spacer */}
         <div className="relative z-20 h-20" />
 
-        {/* Content */}
         <div className="relative z-20 h-[calc(100%-5rem)] flex flex-col justify-end px-6 md:px-12 lg:px-20 pb-16 md:pb-24">
           <div key={`slide-${current}`}>
 
-            {/* Company name block */}
             <div className="fade-up mb-5">
               <p className="font-inter text-xs font-bold tracking-[0.4em] text-gold-primary/70 uppercase mb-2">
                 Lexxes Group Presents
@@ -191,7 +188,6 @@ export default function RealEstatePage() {
               </a>
             </div>
 
-            {/* Controls */}
             <div className="flex items-center gap-5">
               <button onClick={prev} className="w-9 h-9 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm flex items-center justify-center hover:border-gold-primary/50 transition text-white/60 hover:text-gold-primary">
                 <ChevronLeft size={16} />
@@ -214,8 +210,7 @@ export default function RealEstatePage() {
           </div>
         </div>
 
-        {/* Stats strip */}
-        <div className="absolute bottom-0 right-0 z-20 hidden lg:flex items-center gap-10 px-10 py-5 bg-[#0a0f1e]/70 backdrop-blur-xl border-t border-l border-white/5 rounded-tl-2xl">
+        <div className="absolute bottom-0 right-0 z-20 hidden lg:flex items-center gap-10 px-10 py-5 bg-navy-dark/70 backdrop-blur-xl border-t border-l border-white/5 rounded-tl-2xl">
           {[
             { value: "40%", label: "Below Market" },
             { value: "100%", label: "Verified" },
@@ -232,7 +227,8 @@ export default function RealEstatePage() {
       {/* ══════════════════════════════════════
           BANK AUCTION HIGHLIGHT
       ══════════════════════════════════════ */}
-      <section className="py-16 bg-[#1a1a2e] text-white">
+      {/* Updated to bg-navy-dark theme */}
+      <section className="py-16 bg-navy-dark text-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div>
@@ -262,26 +258,36 @@ export default function RealEstatePage() {
       {/* ══════════════════════════════════════
           PROPERTY LISTINGS
       ══════════════════════════════════════ */}
-      <section id="listings" className="py-24 bg-[#F8F7F5]">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
+      <section id="listings" className="relative py-24 bg-[#F8F7F5]">
+        {/* ── GRID PATTERN ── */}
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+          <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid-pattern-listings" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-gold-primary/30" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid-pattern-listings)" />
+          </svg>
+        </div>
 
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8">
           <div className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div>
               <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-3 font-bold flex items-center gap-2">
                 <span className="w-4 h-px bg-gold-primary/50" /> Property Listings
               </p>
-              <h2 className="font-playfair text-4xl md:text-5xl font-bold text-[#1a1a2e]">
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold text-navy-dark">
                 Available <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-primary to-amber-600 italic">Properties.</span>
               </h2>
             </div>
 
-            {/* Filter tabs */}
             <div className="flex items-center gap-2 flex-wrap">
               {tags.map((tag) => (
                 <button key={tag} onClick={() => setActiveTag(tag)}
                   className={`px-4 py-2 rounded-xl font-inter text-xs font-bold uppercase tracking-wider transition ${
                     activeTag === tag
-                      ? "bg-[#1a1a2e] text-white"
+                      ? "bg-navy-dark text-white"
                       : "bg-white border border-slate-200 text-slate-500 hover:border-slate-300"
                   }`}
                 >
@@ -294,20 +300,13 @@ export default function RealEstatePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((property, i) => (
               <div key={i} className="group bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 overflow-hidden">
-
-                {/* Image */}
                 <div className="relative h-52 overflow-hidden">
                   <Image src={property.img} alt={property.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a2e]/60 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/60 to-transparent" />
 
-                  {/* Tags */}
                   <div className="absolute top-3 left-3 flex gap-2">
                     <span className={`font-inter text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md ${
-                      property.tag === "Bank Auction"
-                        ? "bg-red-500/90 text-white"
-                        : property.tag === "Premium"
-                        ? "bg-gold-primary text-navy-dark"
-                        : "bg-emerald-500/90 text-white"
+                      property.tag === "Bank Auction" ? "bg-red-500/90 text-white" : property.tag === "Premium" ? "bg-gold-primary text-navy-dark" : "bg-emerald-500/90 text-white"
                     }`}>
                       {property.tag}
                     </span>
@@ -318,35 +317,24 @@ export default function RealEstatePage() {
                     )}
                   </div>
 
-                  {/* Location */}
                   <div className="absolute bottom-3 left-3 flex items-center gap-1.5">
                     <MapPin size={11} className="text-gold-primary" />
                     <span className="font-inter text-[10px] font-bold text-white uppercase tracking-wider">{property.location}</span>
                   </div>
                 </div>
 
-                {/* Content */}
                 <div className="p-5">
-                  <h3 className="font-playfair text-lg font-bold text-[#1a1a2e] mb-1">{property.title}</h3>
-
-                  {/* Price */}
+                  <h3 className="font-playfair text-lg font-bold text-navy-dark mb-1">{property.title}</h3>
                   <div className="flex items-baseline gap-2 mb-4">
-                    <span className="font-playfair text-2xl font-bold text-[#1a1a2e]">{property.price}</span>
-                    {property.original && (
-                      <span className="font-inter text-xs text-slate-400 line-through">{property.original}</span>
-                    )}
+                    <span className="font-playfair text-2xl font-bold text-navy-dark">{property.price}</span>
+                    {property.original && <span className="font-inter text-xs text-slate-400 line-through">{property.original}</span>}
                   </div>
-
-                  {/* Details pills */}
                   <div className="flex flex-wrap gap-1.5 mb-5">
                     {property.details.map((d) => (
-                      <span key={d} className="font-inter text-[9px] font-bold uppercase tracking-wider text-slate-500 bg-slate-100 px-2 py-1 rounded-md">
-                        {d}
-                      </span>
+                      <span key={d} className="font-inter text-[9px] font-bold uppercase tracking-wider text-slate-500 bg-slate-100 px-2 py-1 rounded-md">{d}</span>
                     ))}
                   </div>
-
-                  <Link href="/register" className="group/btn flex items-center justify-center gap-2 w-full py-3 bg-[#1a1a2e] hover:bg-[#2a2a4e] text-white rounded-xl font-inter font-bold text-xs uppercase tracking-widest transition">
+                  <Link href="/register" className="group/btn flex items-center justify-center gap-2 w-full py-3 bg-navy-dark hover:bg-[#2a2a4e] text-white rounded-xl font-inter font-bold text-xs uppercase tracking-widest transition">
                     Enquire Now
                     <ArrowRight size={13} className="group-hover/btn:translate-x-0.5 transition-transform" />
                   </Link>
@@ -367,11 +355,22 @@ export default function RealEstatePage() {
       {/* ══════════════════════════════════════
           HOW IT WORKS
       ══════════════════════════════════════ */}
-      <section className="py-24 bg-white border-y border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
+      <section className="relative py-24 bg-white border-y border-slate-100">
+        <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
+          <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid-pattern-how" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-gold-primary/30" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid-pattern-how)" />
+          </svg>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8">
           <div className="mb-14">
             <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-3 font-bold">Process</p>
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-[#1a1a2e]">
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-navy-dark">
               From Search to <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-primary to-amber-600 italic">Ownership.</span>
             </h2>
           </div>
@@ -382,7 +381,7 @@ export default function RealEstatePage() {
                   {step.step}
                 </div>
                 <p className="font-inter text-[10px] font-bold uppercase tracking-widest text-gold-primary/60 mb-3">{step.step}</p>
-                <h3 className="font-playfair text-lg font-bold text-[#1a1a2e] mb-2">{step.title}</h3>
+                <h3 className="font-playfair text-lg font-bold text-navy-dark mb-2">{step.title}</h3>
                 <p className="font-inter text-sm text-slate-500 font-light leading-relaxed">{step.desc}</p>
               </div>
             ))}
@@ -393,13 +392,24 @@ export default function RealEstatePage() {
       {/* ══════════════════════════════════════
           WHY INVEST WITH US
       ══════════════════════════════════════ */}
-      <section className="py-24 bg-[#F8F7F5]">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
+      <section className="relative py-24 bg-[#F8F7F5]">
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+          <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid-pattern-why" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-gold-primary/30" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid-pattern-why)" />
+          </svg>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8">
           <div className="mb-14 text-center">
             <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-3 font-bold flex items-center justify-center gap-2">
               <span className="w-8 h-px bg-gold-primary/40" /> Why Alliance Real Estate <span className="w-8 h-px bg-gold-primary/40" />
             </p>
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-[#1a1a2e]">
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-navy-dark">
               Why Invest <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-primary to-amber-600 italic">With Us?</span>
             </h2>
           </div>
@@ -410,7 +420,7 @@ export default function RealEstatePage() {
                 <div className="w-12 h-12 rounded-2xl bg-gold-primary/10 border border-gold-primary/20 flex items-center justify-center mx-auto mb-5 group-hover:bg-gold-primary/20 transition">
                   <item.icon size={20} className="text-gold-primary" />
                 </div>
-                <h3 className="font-playfair text-lg font-bold text-[#1a1a2e] mb-2">{item.title}</h3>
+                <h3 className="font-playfair text-lg font-bold text-navy-dark mb-2">{item.title}</h3>
                 <p className="font-inter text-sm text-slate-500 font-light leading-relaxed">{item.desc}</p>
               </div>
             ))}
@@ -421,7 +431,8 @@ export default function RealEstatePage() {
       {/* ══════════════════════════════════════
           CTA
       ══════════════════════════════════════ */}
-      <section className="py-28 bg-[#1a1a2e] relative overflow-hidden">
+      {/* Updated to bg-navy-dark theme */}
+      <section className="py-28 bg-navy-dark relative overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-[60vw] h-[300px] bg-gold-primary/8 blur-[120px] rounded-full" />
         </div>

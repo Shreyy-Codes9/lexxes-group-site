@@ -11,27 +11,6 @@ const stats = [
   { value: "2", label: "Travel Destinations" },
 ];
 
-const team = [
-  {
-    name: "Amit Rangari",
-    role: "Founder & CEO",
-    desc: "Visionary entrepreneur with a mission to make financial freedom accessible to every Indian.",
-    img: null,
-  },
-  {
-    name: "Team Member",
-    role: "Stock Market Head",
-    desc: "Certified trader and mentor with years of experience in technical analysis and live trading.",
-    img: null,
-  },
-  {
-    name: "Team Member",
-    role: "Real Estate Head",
-    desc: "Property investment specialist with deep expertise in bank auction deals across Maharashtra.",
-    img: null,
-  },
-];
-
 const services = [
   {
     icon: TrendingUp,
@@ -70,9 +49,10 @@ const values = [
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen pt-20 bg-[#F8F7F5] text-[#1a1a2e] overflow-x-hidden selection:bg-navy-dark selection:text-white">
+    <main className="min-h-screen bg-[#F8F7F5] text-[#1a1a2e] overflow-x-hidden selection:bg-navy-dark selection:text-white">
 
-      <style dangerouslySetInnerHTML={{__html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @keyframes fadeUpReveal {
           0% { opacity: 0; transform: translateY(28px); filter: blur(6px); }
           100% { opacity: 1; transform: translateY(0); filter: blur(0); }
@@ -85,9 +65,22 @@ export default function AboutPage() {
       `}} />
 
       {/* ══════════════════════════════════════
-          HERO
-      ══════════════════════════════════════ */}
-      <section className="relative min-h-[80vh] flex items-end overflow-hidden bg-navy-dark">
+                          HERO
+          ══════════════════════════════════════ */}
+      {/* Updated bg-navy-dark and relative for grid */}
+      <section className="relative pt-22 min-h-screen flex items-end overflow-hidden bg-navy-dark">
+
+        {/* ── GRID PATTERN BACKGROUND ── */}
+        <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
+          <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid-pattern-hero" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-gold-primary" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid-pattern-hero)" />
+          </svg>
+        </div>
 
         {/* Background image */}
         <div className="absolute inset-0">
@@ -95,31 +88,50 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-navy-dark via-navy-dark/80 to-navy-dark/40" />
         </div>
 
-        {/* Navbar spacer */}
-        <div className="absolute top-0 left-0 right-0 h-20" />
-
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 pb-20 md:pb-28 w-full">
-
-          <div className="fade-up">
-            <p className="font-inter text-[10px] tracking-[0.4em] text-gold-primary/70 uppercase mb-4 font-bold">
-              About Us
+          <div className="fade-up max-w-4xl">
+            <p className="font-inter text-[10px] tracking-[0.4em] text-gold-primary/70 uppercase mb-6 font-bold">
+              About Us — Lexxes Group
             </p>
-            <h1 className="font-playfair text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-[1.0] tracking-tight max-w-4xl">
+
+            <h1 className="font-playfair text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-[1.0] tracking-tight">
               We Believe in <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-primary via-[#ffeaab] to-gold-primary italic pr-4">
                 Financial Freedom.
               </span>
             </h1>
+
             <p className="fade-up delay-1 font-inter text-base md:text-xl text-white/60 max-w-2xl font-light leading-relaxed mb-10">
-              Lexxes Group is a Mumbai-based network organization founded on a simple belief — financial freedom is not a privilege. It is a right. We give people the tools, knowledge and community to make it happen.
+              Lexxes Group is a Nagpur-based network organization founded on a simple belief — financial freedom is not a privilege. It is a right. We give people the tools, knowledge and community to make it happen.
             </p>
-            <div className="fade-up delay-2 flex flex-wrap gap-8 pt-8 border-t border-white/10">
-              {stats.map((s) => (
-                <div key={s.label}>
-                  <p className="font-playfair text-3xl font-bold text-gold-primary">{s.value}</p>
-                  <p className="font-inter text-[10px] uppercase tracking-widest text-white/40 mt-1">{s.label}</p>
+
+            <div className="fade-up delay-2 grid grid-cols-2 md:grid-cols-3 gap-4 mb-12 max-w-2xl">
+              {[
+                { label: "Founded", value: "2024", sub: "Nagpur, Maharashtra" },
+                { label: "Members", value: "500+", sub: "Across India" },
+                { label: "Verticals", value: "3", sub: "Stock, Property, Travel" },
+              ].map((f) => (
+                <div key={f.label} className="px-5 py-4 rounded-xl bg-white/5 border border-white/10">
+                  <p className="font-inter text-[10px] uppercase tracking-widest text-white/40 mb-1">{f.label}</p>
+                  <p className="font-playfair text-2xl font-bold text-gold-primary">{f.value}</p>
+                  <p className="font-inter text-[10px] text-white/40 mt-0.5">{f.sub}</p>
                 </div>
               ))}
+            </div>
+
+            <div className="fade-up delay-3 flex flex-col sm:flex-row gap-4">
+              <Link href="/register"
+                className="group relative flex items-center justify-center gap-3 bg-gold-primary text-navy-dark px-8 py-4 font-inter font-bold text-xs uppercase tracking-widest transition rounded-xl shadow-[0_4px_20px_rgba(201,168,76,0.3)] overflow-hidden w-fit"
+              >
+                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-[shine_1.5s_ease-in-out]" />
+                <span className="relative z-10">Join Lexxes Group</span>
+                <ArrowRight size={14} className="relative z-10 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link href="/contact"
+                className="flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white px-8 py-4 font-inter font-bold text-xs uppercase tracking-widest transition rounded-xl w-fit"
+              >
+                Contact Us
+              </Link>
             </div>
           </div>
         </div>
@@ -131,44 +143,34 @@ export default function AboutPage() {
       <section className="py-24 bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-
             <div>
               <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-4 font-bold flex items-center gap-2">
                 <span className="w-4 h-px bg-gold-primary/50" /> Our Story
               </p>
-              <h2 className="font-playfair text-4xl md:text-5xl font-bold text-[#1a1a2e] mb-6 leading-tight">
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold text-navy-dark mb-6 leading-tight">
                 Born in Mumbai.<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-primary to-amber-600 italic">Built for India.</span>
               </h2>
               <div className="space-y-4 font-inter text-base text-slate-600 font-light leading-relaxed">
-                <p>
-                  Lexxes Group was founded in Mumbai with a clear mission — to create a platform where ordinary people could access extraordinary opportunities. The kind of opportunities that were previously only available to those with connections, capital or the right circles.
-                </p>
-                <p>
-                  Our founder Amit Rangari saw a gap. Millions of Indians wanted to invest, learn and grow — but they lacked the guidance, the community and the access. Lexxes Group was built to bridge that gap.
-                </p>
-                <p>
-                  Today we operate three verticals: stock market education through Tred India, real estate investment through Alliance Real Estate, and reward travel through Travel Asia. Every vertical serves the same purpose — helping our members build wealth and live better.
-                </p>
+                <p>Lexxes Group was founded in Mumbai with a clear mission — to create a platform where ordinary people could access extraordinary opportunities...</p>
+                <p>We saw a gap. Millions of Indians wanted to invest, learn and grow — but they lacked the guidance...</p>
+                <p>Today we operate three verticals: stock market education through Tred India, real estate investment through Alliance Real Estate, and reward travel through Travel Asia...</p>
               </div>
             </div>
 
-            {/* Image / visual block */}
             <div className="relative">
               <div className="relative h-[480px] rounded-3xl overflow-hidden">
-                <Image src="/heroimg/stock.png" alt="Our Story" fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a2e]/80 to-transparent" />
+                <Image src="/logo.png" alt="Our Story" fill className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/80 to-transparent" />
                 <div className="absolute bottom-8 left-8 right-8">
                   <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6">
                     <p className="font-playfair text-xl font-bold text-white mb-1">
                       "Financial freedom is not a privilege. It is a right."
                     </p>
-                    <p className="font-inter text-xs text-white/60 uppercase tracking-widest">— Amit Rangari, Founder</p>
+                    <p className="font-inter text-xs text-white/60 uppercase tracking-widest">— Lexxes Group</p>
                   </div>
                 </div>
               </div>
-
-              {/* Floating stat card */}
               <div className="absolute -top-6 -right-6 bg-gold-primary rounded-2xl p-5 shadow-xl shadow-gold-primary/20">
                 <p className="font-playfair text-3xl font-bold text-navy-dark">2024</p>
                 <p className="font-inter text-[10px] uppercase tracking-widest text-navy-dark/70 mt-0.5">Est. Mumbai</p>
@@ -181,9 +183,21 @@ export default function AboutPage() {
       {/* ══════════════════════════════════════
           MISSION VISION VALUES
       ══════════════════════════════════════ */}
-      <section className="py-24 bg-[#1a1a2e] text-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
+      {/* Updated bg-navy-dark and added grid */}
+      <section className="relative py-24 bg-navy-dark text-white overflow-hidden">
+        
+        <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
+          <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid-pattern-values" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-gold-primary" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid-pattern-values)" />
+          </svg>
+        </div>
 
+        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8">
           <div className="mb-14 text-center">
             <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-3 font-bold flex items-center justify-center gap-2">
               <span className="w-8 h-px bg-gold-primary/40" /> What Drives Us <span className="w-8 h-px bg-gold-primary/40" />
@@ -208,97 +222,33 @@ export default function AboutPage() {
       </section>
 
       {/* ══════════════════════════════════════
-          STATS
-      ══════════════════════════════════════ */}
-      <section className="py-20 bg-white border-y border-slate-100">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-            {[
-              { value: "500+", label: "Active Members", sub: "Across India" },
-              { value: "3", label: "Business Verticals", sub: "Stock, Property, Travel" },
-              { value: "₹3,000", label: "Starts From", sub: "Starter Package" },
-              { value: "100%", label: "Member-First", sub: "We grow when you grow" },
-            ].map((s) => (
-              <div key={s.label} className="text-center">
-                <p className="font-playfair text-4xl md:text-5xl font-bold text-[#1a1a2e] mb-1">{s.value}</p>
-                <p className="font-inter text-sm font-bold text-[#1a1a2e] uppercase tracking-wider mb-1">{s.label}</p>
-                <p className="font-inter text-xs text-slate-400">{s.sub}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════
-          TEAM
-      ══════════════════════════════════════ */}
-      <section className="py-24 bg-[#F8F7F5]">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-
-          <div className="mb-14">
-            <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-3 font-bold flex items-center gap-2">
-              <span className="w-4 h-px bg-gold-primary/50" /> The Team
-            </p>
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-[#1a1a2e]">
-              The People Behind <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-primary to-amber-600 italic">Lexxes Group.</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {team.map((member, i) => (
-              <div key={i} className="group bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 overflow-hidden">
-                {/* Avatar */}
-                <div className="h-48 bg-gradient-to-br from-navy-dark to-[#1a1a2e] relative flex items-center justify-center">
-                  {member.img ? (
-                    <Image src={member.img} alt={member.name} fill className="object-cover" />
-                  ) : (
-                    <div className="w-20 h-20 rounded-full bg-gold-primary/10 border-2 border-gold-primary/30 flex items-center justify-center">
-                      <span className="font-playfair text-3xl font-bold text-gold-primary">
-                        {member.name[0]}
-                      </span>
-                    </div>
-                  )}
-                  <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-primary/40 to-transparent" />
-                </div>
-
-                <div className="p-6">
-                  <h3 className="font-playfair text-xl font-bold text-[#1a1a2e] mb-1">{member.name}</h3>
-                  <p className="font-inter text-[10px] font-bold uppercase tracking-widest text-gold-primary mb-3">{member.role}</p>
-                  <p className="font-inter text-sm text-slate-500 font-light leading-relaxed">{member.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════
           3 SERVICES OVERVIEW
       ══════════════════════════════════════ */}
       <section className="py-24 bg-white border-t border-slate-100">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
-
           <div className="mb-14 text-center">
             <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-3 font-bold flex items-center justify-center gap-2">
               <span className="w-8 h-px bg-gold-primary/40" /> What We Do <span className="w-8 h-px bg-gold-primary/40" />
             </p>
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-[#1a1a2e]">
+            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-navy-dark">
               Three Ways to <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-primary to-amber-600 italic">Build Wealth.</span>
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
             {services.map((svc) => (
-              <Link key={svc.company} href={svc.href}
-                className={`group p-8 rounded-2xl border ${svc.color} hover:-translate-y-1 hover:shadow-md transition-all duration-300`}
+              <Link
+                key={svc.company}
+                href={svc.href}
+                className={`group p-8 rounded-2xl border ${svc.color} hover:-translate-y-1 hover:shadow-md transition-all duration-300 flex flex-col`}
               >
-                <div className={`w-12 h-12 rounded-2xl bg-white border border-slate-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                <div className="w-12 h-12 rounded-2xl bg-white border border-slate-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform flex-shrink-0">
                   <svc.icon size={22} className={svc.iconColor} />
                 </div>
-                <p className="font-inter text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-2">{svc.company}</p>
-                <h3 className="font-playfair text-xl font-bold text-[#1a1a2e] mb-3">{svc.title}</h3>
-                <p className="font-inter text-sm text-slate-500 font-light leading-relaxed mb-5">{svc.desc}</p>
-                <div className="flex items-center gap-2 font-inter text-xs font-bold uppercase tracking-widest text-[#1a1a2e] group-hover:text-gold-primary transition">
+                <h3 className="font-playfair text-2xl md:text-3xl font-bold text-navy-dark mb-1">{svc.company}</h3>
+                <p className="font-inter text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-4">{svc.title}</p>
+                <p className="font-inter text-sm text-slate-500 font-light leading-relaxed mb-8 flex-grow">{svc.desc}</p>
+                <div className="flex items-center gap-2 font-inter text-xs font-bold uppercase tracking-widest text-navy-dark group-hover:text-gold-primary transition mt-auto">
                   Learn More <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </Link>
@@ -310,7 +260,20 @@ export default function AboutPage() {
       {/* ══════════════════════════════════════
           CTA
       ══════════════════════════════════════ */}
-      <section className="py-28 bg-[#1a1a2e] relative overflow-hidden">
+      {/* Updated bg-navy-dark and added grid */}
+      <section className="py-28 bg-navy-dark relative overflow-hidden">
+        
+        <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
+          <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid-pattern-cta" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-gold-primary" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid-pattern-cta)" />
+          </svg>
+        </div>
+
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="w-[60vw] h-[300px] bg-gold-primary/8 blur-[120px] rounded-full" />
         </div>

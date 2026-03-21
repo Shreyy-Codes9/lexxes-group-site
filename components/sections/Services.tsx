@@ -9,7 +9,7 @@ const services = [
       "Expert curated courses and live mentorship to help you understand and profit from the stock market. Built for beginners and advanced investors alike. Our courses cover everything from basics to advanced trading strategies with live mentorship sessions.",
     badge: "Courses + Mentorship",
     link: "/services/stock-market",
-    image: "/heroimg/stock.png",
+    image: "/pageimages/stockmarket/bitcoin.jpg",
     large: true,
     icon: (
       <svg className="size-12 text-gold-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -23,7 +23,7 @@ const services = [
     description: "Bank auction properties and premium listings at below market prices.",
     badge: "Bank Auction Deals",
     link: "/services/real-estate",
-    image: "/heroimg/realestate.png",
+    image: "/pageimages/realestate/house.png",
     large: false,
     icon: (
       <svg className="size-8 text-gold-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -35,9 +35,9 @@ const services = [
     company: "TRAVEL ASIA",
     title: "Luxury Travel Rewards",
     description: "Goa for starters. Switzerland for achievers. Your success unlocks the world.",
-    badge: "Goa + Switzerland",
+    badge: "Travel Rewards",
     link: "/services/tourism",
-    image: "/heroimg/tour.png",
+    image: "/pageimages/tourism/tajmahal.png",
     large: false,
     icon: (
       <svg className="size-8 text-gold-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
