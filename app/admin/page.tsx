@@ -113,7 +113,7 @@ export default function AdminPage() {
   const fetchMembers = async () => {
     setIsLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/api/admin/members", {
+      const res = await fetch("https://lexxes-group-backend.onrender.com/api/admin/members", {
         headers: { Authorization: `Bearer ${getToken()}` },
       });
       const data = await res.json();
@@ -129,7 +129,7 @@ export default function AdminPage() {
     setMemberTree([]);
     setTreeLoading(true);
     try {
-      const res = await fetch(`http://localhost:5000/api/admin/members/${member._id}/tree`, {
+      const res = await fetch(`https://lexxes-group-backend.onrender.com/api/admin/members/${member._id}/tree`, {
         headers: { Authorization: `Bearer ${getToken()}` },
       });
       const data = await res.json();
@@ -140,7 +140,7 @@ export default function AdminPage() {
 
   const toggleActivate = async (id: string) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/admin/members/${id}/toggle`, {
+      const res = await fetch(`https://lexxes-group-backend.onrender.com/api/admin/members/${id}/toggle`, {
         method: "PUT",
         headers: { Authorization: `Bearer ${getToken()}` },
       });
@@ -151,7 +151,7 @@ export default function AdminPage() {
 
   const changePackage = async (id: string, pkg: string) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/admin/members/${id}/package`, {
+      const res = await fetch(`https://lexxes-group-backend.onrender.com/api/admin/members/${id}/package`, {
         method: "PUT",
         headers: { Authorization: `Bearer ${getToken()}`, "Content-Type": "application/json" },
         body: JSON.stringify({ package: pkg }),
@@ -164,7 +164,7 @@ export default function AdminPage() {
   const deleteMember = async (id: string, name: string) => {
     if (!confirm(`Are you sure you want to delete ${name}?`)) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/admin/members/${id}`, {
+      const res = await fetch(`https://lexxes-group-backend.onrender.com/api/admin/members/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${getToken()}` },
       });

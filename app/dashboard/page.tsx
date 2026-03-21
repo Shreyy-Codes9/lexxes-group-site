@@ -94,7 +94,7 @@ export default function DashboardPage() {
       const storedToken = localStorage.getItem("lexxes_token");
       if (!storedToken) return;
       try {
-        const res = await fetch("http://localhost:5000/api/auth/my-tree", {
+        const res = await fetch("https://lexxes-group-backend.onrender.com/api/auth/my-tree", {
           headers: { Authorization: `Bearer ${storedToken}` },
         });
         const data = await res.json();
