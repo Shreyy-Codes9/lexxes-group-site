@@ -1,170 +1,261 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
-
-const slides = [
-  {
-    id: "01",
-    img: "/heroimg/realestate.png",
-    badge: "ALLIANCE REAL ESTATE",
-    heading: "Own Premium",
-    highlight: "Properties.",
-    sub: "Discover bank auction properties and premium real estate deals at unbeatable prices. Guided investment from discovery to ownership.",
-    cta: { label: "View Properties", href: "/services/real-estate" },
-  },
-  {
-    id: "02",
-    img: "/heroimg/tour.png",
-    badge: "TRAVEL ASIA • TOURISM",
-    heading: "Your Success,",
-    highlight: "Your Reward.",
-    sub: "Earn exclusive travel packages to Goa and Switzerland as you grow with Lexxes Group. Luxury experiences await every achiever.",
-    cta: { label: "See Packages", href: "/services/tourism" },
-  },
-  {
-    id: "03",
-    img: "/heroimg/stock.png",
-    badge: "TRED INDIA • STOCK MARKET",
-    heading: "Learn The Market,",
-    highlight: "Master Your Money.",
-    sub: "Access expert-curated stock market courses, live mentorship and real-time market insights. Start your wealth-building journey today.",
-    cta: { label: "Explore Courses", href: "/services/stock-market" },
-  },
-];
-
-const AUTO_PLAY_INTERVAL = 6000;
+import { ArrowUpRight, Plane, Building, TrendingUp, MapPin, ArrowRight } from "lucide-react";
 
 export default function Hero() {
-  const [current, setCurrent] = useState(0);
-
-  // Auto-advance — always runs, never pauses
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % slides.length);
-    }, AUTO_PLAY_INTERVAL);
-    return () => clearInterval(interval);
-  }, []);
-
-  const nextSlide = useCallback(() => setCurrent((p) => (p + 1) % slides.length), []);
-  const prevSlide = useCallback(() => setCurrent((p) => (p - 1 + slides.length) % slides.length), []);
-
-  const s = slides[current];
-
   return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#030712] text-white selection:bg-gold-primary selection:text-navy-dark">
+    <section className="min-h-screen bg-base-secondary text-ink p-4 md:p-6 pt-24 md:pt-25 flex flex-col">
 
-      {/* --- ANIMATIONS --- */}
-      <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes fadeUpReveal {
-          0% { opacity: 0; transform: translateY(30px); filter: blur(8px); }
-          100% { opacity: 1; transform: translateY(0); filter: blur(0); }
-        }
-        @keyframes fillProgress {
-          0% { width: 0%; }
-          100% { width: 100%; }
-        }
-        .animate-reveal {
-          opacity: 0;
-          animation: fadeUpReveal 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-        }
-        .animate-progress {
-          animation: fillProgress ${AUTO_PLAY_INTERVAL}ms linear forwards;
-        }
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-300 { animation-delay: 0.3s; }
-      `}} />
+      {/* ── MAIN BENTO GRID ── */}
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-5">
 
-      {/* --- BACKGROUND SLIDES --- */}
-      <div className="absolute inset-0 z-0">
-        {slides.map((slide, i) => (
-          <div
-            key={i}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-              current === i ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
-            }`}
+        {/* ── BLOCK 1: MAIN TOURISM HERO ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          className="lg:col-span-8 relative rounded-3xl overflow-hidden group min-h-[75vh] lg:min-h-0 shadow-md border border-border"
+        >
+          {/* Background Image */}
+          <Image
+            src="/heroimg/tour1.jpg"
+            alt="Lexxes Group Tourism"
+            fill
+            priority
+            className="object-cover transition-transform duration-[3000ms] group-hover:scale-105"
+          />
+
+          {/* Mobile overlay — lighter top so image is visible */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/95 md:from-black/40 md:via-black/20 md:to-black/95" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/10 to-transparent md:from-black/70 md:via-black/30" />
+
+          {/* Content */}
+          <div className="absolute inset-0 p-5 md:p-10 flex flex-col justify-between text-white">
+
+            {/* Top bar */}
+            <div className="flex justify-between items-start">
+              <div className="flex items-center gap-2 backdrop-blur-md bg-black/30 border border-white/20 shadow-sm rounded-full px-3 py-2 md:px-4">
+                <Plane size={13} className="text-gold-primary" />
+                <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em]">Travel Asia • Tourism</span>
+              </div>
+              <Link
+                href="/services/tourism"
+                className="w-10 h-10 md:w-12 md:h-12 rounded-full backdrop-blur-md bg-black/30 border border-white/20 flex items-center justify-center hover:bg-white hover:text-ink transition-all duration-300 group/btn shadow-sm"
+              >
+                <ArrowUpRight size={18} className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform duration-300" />
+              </Link>
+            </div>
+
+            {/* Main headline & Info */}
+            <div className="mt-auto">
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                className="font-soria text-[clamp(2.8rem,6.5vw,6.5rem)] leading-[0.9] tracking-tight drop-shadow-xl mb-3"
+              >
+                GROW RICH.
+                <br />
+                <span className="italic text-gold-light">TRAVEL FAR.</span>
+                <br />
+                LIVE FREE.
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                className="text-white/80 text-sm font-medium max-w-lg leading-relaxed mb-5"
+              >
+                Grow with Lexxes Group and unlock exclusive travel packages to Goa and Switzerland. Luxury experiences are your reward.
+              </motion.p>
+
+              {/* Mobile package pills — visible only on mobile */}
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.5 }}
+                className="flex md:hidden gap-3 mb-5 flex-wrap"
+              >
+                <div className="flex items-center gap-2 bg-black/40 backdrop-blur-md border border-white/15 rounded-full px-3 py-2">
+                  <MapPin size={12} className="text-gold-primary shrink-0" />
+                  <span className="text-[11px] font-bold text-white">Goa — ₹4,600</span>
+                </div>
+                <div className="flex items-center gap-2 bg-black/40 backdrop-blur-md border border-white/15 rounded-full px-3 py-2">
+                  <MapPin size={12} className="text-gold-primary shrink-0" />
+                  <span className="text-[11px] font-bold text-white">Switzerland — ₹30,000</span>
+                </div>
+              </motion.div>
+
+              {/* Desktop info bar */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                className="hidden md:flex items-center gap-6 lg:gap-8 backdrop-blur-lg bg-black/50 border border-white/15 rounded-2xl p-5 w-fit shadow-2xl"
+              >
+                <div className="flex flex-col gap-1.5 pr-6 lg:pr-8 border-r border-white/20">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">Starter Package</span>
+                  <div className="flex items-center gap-2 text-[15px] font-bold tracking-wide">
+                    <MapPin size={15} className="text-gold-primary shrink-0" />
+                    Goa, India — ₹4,600
+                  </div>
+                </div>
+                <div className="flex flex-col gap-1.5 pr-6 lg:pr-8 border-r border-white/20">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50">Premium Package</span>
+                  <div className="flex items-center gap-2 text-[15px] font-bold tracking-wide">
+                    <MapPin size={15} className="text-gold-primary shrink-0" />
+                    Switzerland — ₹30,000
+                  </div>
+                </div>
+                <Link
+                  href="/register"
+                  className="relative overflow-hidden flex items-center gap-2 bg-gold-primary text-ink px-8 py-4 rounded-xl text-xs font-bold uppercase tracking-[0.15em] group/cta shadow-lg"
+                >
+                  <span className="absolute inset-0 bg-gold-dark translate-x-[-101%] group-hover/cta:translate-x-0 transition-transform duration-500 ease-[0.22,1,0.36,1]" />
+                  <span className="relative z-10 flex items-center gap-2">
+                    Join Now
+                    <ArrowRight size={15} className="group-hover/cta:translate-x-1 transition-transform" />
+                  </span>
+                </Link>
+              </motion.div>
+
+              {/* Mobile CTA */}
+              <Link
+                href="/register"
+                className="md:hidden relative overflow-hidden flex items-center justify-center gap-2 w-full bg-gold-primary text-ink px-6 py-4 rounded-2xl text-[11px] font-bold uppercase tracking-[0.2em] shadow-lg group/cta"
+              >
+                <span className="absolute inset-0 bg-gold-dark translate-x-[-101%] group-hover/cta:translate-x-0 transition-transform duration-500" />
+                <span className="relative z-10 flex items-center gap-2">
+                  Join Lexxes Group
+                  <ArrowRight size={14} className="group-hover/cta:translate-x-1 transition-transform" />
+                </span>
+              </Link>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* ── RIGHT COLUMN ── */}
+        <div className="lg:col-span-4 flex flex-row lg:flex-col gap-4 md:gap-5">
+
+          {/* ── BLOCK 2: REAL ESTATE ── */}
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="flex-1 rounded-3xl overflow-hidden relative group cursor-pointer shadow-md border border-border min-h-[200px] lg:min-h-0"
           >
             <Image
-              src={slide.img}
-              alt={slide.heading}
+              src="/heroimg/realestate.png"
+              alt="Premium Real Estate"
               fill
-              priority={i === 0}
-              className={`object-cover transition-transform ease-out ${
-                current === i ? "scale-[1.05] duration-[15000ms]" : "scale-100 duration-1000"
-              }`}
+              className="object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/40 to-[#030712]/80" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#030712]/80 via-transparent to-[#030712]/80" />
-          </div>
-        ))}
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.04] mix-blend-overlay z-20 pointer-events-none" />
-      </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/55 to-black/10" />
 
-      {/* --- CONTENT --- */}
-      <div className="relative z-30 flex-1 flex flex-col items-center justify-center text-center px-5 sm:px-10 h-full">
-        <div key={`content-${current}`} className="max-w-4xl mx-auto flex flex-col items-center pt-12">
-
-          <div className="inline-flex items-center gap-4 mb-6 px-5 py-2 animate-reveal backdrop-blur-sm bg-white/[0.03] border border-white/10 rounded-full shadow-2xl">
-            <span className="w-2 h-2 rounded-full bg-gold-primary animate-pulse" />
-            <span className="font-inter text-[0.65rem] md:text-xs font-semibold tracking-[0.3em] text-gold-primary uppercase">
-              {s.badge}
-            </span>
-          </div>
-
-          <h1 className="font-playfair text-[clamp(3.5rem,7vw,7rem)] font-bold tracking-tight mb-6 leading-[1.05] text-white animate-reveal delay-100 drop-shadow-2xl">
-            {s.heading}
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-gold-primary via-[#FFF4D2] to-gold-primary mt-1 italic pr-4">
-              {s.highlight}
-            </span>
-          </h1>
-
-          <p className="font-inter text-base md:text-xl text-white/70 mb-10 max-w-2xl leading-relaxed animate-reveal delay-200 font-light drop-shadow-md">
-            {s.sub}
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full sm:w-auto animate-reveal delay-300">
-            <Link
-              href={s.cta.href}
-              className="group relative flex items-center justify-center gap-3 w-full sm:w-auto font-inter px-10 py-4 bg-gold-primary text-navy-dark font-semibold hover:bg-[#ebd594] transition-all duration-300 uppercase tracking-[0.15em] text-sm rounded-sm overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-white/20 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
-              <span className="relative z-10 text-black">{s.cta.label}</span>
-              <ArrowRight size={16} className="relative z-10 group-hover:translate-x-1 transition-transform text-black" />
-            </Link>
-          </div>
-
-        </div>
-      </div>
-
-      {/* --- CONTROLS --- */}
-      <div className="absolute bottom-8 right-1/2 translate-x-1/2 md:translate-x-0 md:right-12 lg:right-16 z-40">
-        <div className="flex items-center gap-6 px-6 py-3.5 rounded-full bg-[#030712]/60 border border-white/10 backdrop-blur-xl shadow-2xl">
-
-          <button onClick={prevSlide} className="text-white/50 hover:text-gold-primary transition-colors duration-300 focus:outline-none" aria-label="Previous Slide">
-            <ChevronLeft size={20} />
-          </button>
-
-          <div className="flex items-center gap-4 font-inter text-xs font-medium tracking-widest text-white/50">
-            <span className="text-white">{s.id}</span>
-            <div className="relative w-16 md:w-24 h-[2px] bg-white/10 overflow-hidden rounded-full">
-              <div
-                key={current}
-                className="absolute top-0 left-0 h-full bg-gold-primary animate-progress"
-              />
+            <div className="absolute inset-0 p-5 flex flex-col justify-between text-white">
+              <div className="flex justify-between items-start">
+                <div className="flex items-center gap-2 backdrop-blur-md bg-black/30 border border-white/20 rounded-full px-3 py-1.5">
+                  <Building size={11} />
+                  <span className="text-[9px] font-bold uppercase tracking-[0.2em]">Real Estate</span>
+                </div>
+                <Link href="/services/real-estate" className="p-1">
+                  <ArrowUpRight size={16} className="text-white/50 group-hover:text-white transition-colors duration-300" />
+                </Link>
+              </div>
+              <div className="relative z-10">
+                <h3 className="font-soria text-2xl md:text-3xl lg:text-4xl leading-[1.0] mb-2 drop-shadow-lg">
+                  Alliance<br />Real Estate
+                </h3>
+                <p className="text-[11px] text-white/70 font-medium leading-relaxed hidden lg:block">
+                  Bank auction properties at unbeatable prices across Nagpur.
+                </p>
+                <Link
+                  href="/services/real-estate"
+                  className="inline-flex items-center gap-1.5 mt-2 text-[10px] font-bold uppercase tracking-[0.2em] text-gold-primary hover:text-gold-light transition-colors group/link"
+                >
+                  View Properties
+                  <ArrowRight size={11} className="group-hover/link:translate-x-0.5 transition-transform" />
+                </Link>
+              </div>
             </div>
-            <span>0{slides.length}</span>
-          </div>
+          </motion.div>
 
-          <button onClick={nextSlide} className="text-white/50 hover:text-gold-primary transition-colors duration-300 focus:outline-none" aria-label="Next Slide">
-            <ChevronRight size={20} />
-          </button>
+          {/* ── BLOCK 3: STOCK MARKET ── */}
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="flex-1 rounded-3xl overflow-hidden relative group cursor-pointer shadow-md border border-border min-h-[200px] lg:min-h-0 bg-ink"
+          >
+            <div className="absolute top-0 right-0 w-48 h-48 bg-blue/30 blur-[70px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none group-hover:opacity-70 transition-opacity duration-500" />
+            <div className="absolute bottom-0 left-0 w-40 h-40 bg-gold-primary/15 blur-[60px] rounded-full pointer-events-none group-hover:opacity-60 transition-opacity duration-500" />
+
+            <Image
+              src="/heroimg/stock.png"
+              alt="Stock Market"
+              fill
+              className="object-cover opacity-[0.25] group-hover:opacity-[0.35] transition-opacity duration-700 mix-blend-luminosity"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent opacity-80" />
+
+            <div className="absolute inset-0 p-5 flex flex-col justify-between text-white">
+              <div className="flex justify-between items-start relative z-10">
+                <div className="flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-3 py-1.5">
+                  <TrendingUp size={11} className="text-gold-primary" />
+                  <span className="text-[9px] font-bold uppercase tracking-[0.2em]">Stock Market</span>
+                </div>
+                <Link href="/services/stock-market" className="p-1">
+                  <ArrowUpRight size={16} className="text-white/50 group-hover:text-gold-primary transition-colors duration-300" />
+                </Link>
+              </div>
+              <div className="relative z-10">
+                <h3 className="font-soria text-2xl md:text-3xl lg:text-4xl leading-[1.0] mb-2 drop-shadow-md">
+                  Tred India<br />
+                  <span className="text-gold-primary italic">Markets</span>
+                </h3>
+                <p className="text-[11px] text-white/70 font-medium leading-relaxed hidden lg:block">
+                  Live mentorship, trading strategies and real-time market insights.
+                </p>
+                <div className="mt-2 flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-gold-primary animate-pulse" />
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-primary">Live Now</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
         </div>
       </div>
+
+      {/* ── BOTTOM SCROLL HINT ── */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 1 }}
+        className="hidden md:flex justify-between items-center pt-6 px-2"
+      >
+        <div className="flex items-center gap-3">
+          <div className="w-4 h-6 rounded-full border border-ink-secondary/30 flex justify-center p-1">
+            <motion.div
+              animate={{ y: [0, 6, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+              className="w-1 h-1 rounded-full bg-ink-secondary"
+            />
+          </div>
+          <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-ink-secondary">
+            Scroll to explore
+          </p>
+        </div>
+        <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-ink-secondary">
+          Tourism • Real Estate • Stock Market
+        </p>
+      </motion.div>
 
     </section>
   );
 }
+  

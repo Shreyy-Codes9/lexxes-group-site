@@ -1,28 +1,60 @@
+@font-face {
+  font-family: "Relieve";
+  src: url("/fonts/Relieve.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Soria" !important;
+  src: url("/fonts/soria-font.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @import "tailwindcss";
 
 @theme {
-  /* Mapping your specific nested structure */
-  --color-navy-dark: #0a0f1e;
-  --color-navy-secondary: #111827;
-  --color-navy-border: #1e293b;
 
-  --color-gold-primary: #c9a84c;
-  --color-gold-light: #e8d5a3;
+  /* ── BASE ── */
+  --color-base: #E8E8F2;
+  --color-base-secondary: #D8D8E6;
+  --color-base-white: #FFFFFF;
 
-  --color-text-primary: #f8f9fa;
-  --color-text-secondary: #94a3b8;
+  /* ── TEXT ── */
+  --color-ink: #011840;
+  --color-ink-secondary: #4A6080;
+  --color-ink-light: #8FA3B8;
 
-  /* Fonts */
+  /* ── GOLD ── */
+  --color-gold-primary: #C9A84C;
+  --color-gold-light: #E8D5A3;
+  --color-gold-dark: #A8892E;
+
+  /* ── BLUE ── */
+  --color-blue: #1E4D8C;
+  --color-blue-light: #EBF1FA;
+  --color-blue-dark: #153866;
+
+  
+  /* ── BORDER ── */
+  --color-border: #C8C8D8;
+
+  /* ── FONTS ── */
   --font-playfair: "Playfair Display", serif;
   --font-inter: "Inter", sans-serif;
+  --font-relieve: "Relieve", serif;
+  --font-family-soria: "Soria", serif ; 
 
-  /* Max Width */
+  /* ── MAX WIDTH ── */
   --size-8xl: 1440px;
 }
 
 @layer base {
   body {
-    @apply bg-navy-dark text-text-primary antialiased;
+    @apply bg-base text-ink antialiased;
     font-family: var(--font-inter);
   }
 }
@@ -30,5 +62,38 @@
 @layer components {
   .container-main {
     @apply mx-auto max-w-7xl px-6 md:px-8;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  .heading-display {
+    font-family: var(--font-soria);
+    @apply text-ink;
+  }
+
+  .heading-section {
+    font-family: var(--font-playfair);
+    @apply text-ink font-bold text-4xl md:text-5xl;
+  }
+
+  .label-upper {
+    font-family: var(--font-inter);
+    @apply text-[10px] font-bold uppercase tracking-[0.3em] text-ink-secondary;
+  }
+
+  /* ── BUTTONS ── */
+  .btn-primary {
+    @apply bg-ink text-base font-inter font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl hover:bg-blue transition-colors;
+  }
+
+  .btn-gold {
+    @apply bg-gold-primary text-ink font-inter font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl hover:bg-gold-dark transition-colors;
+  }
+
+  .btn-blue {
+    @apply bg-blue text-base-white font-inter font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl hover:bg-blue-dark transition-colors;
+  }
+
+  .btn-outline {
+    @apply border border-border text-ink font-inter font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-xl hover:border-ink transition-colors;
   }
 }

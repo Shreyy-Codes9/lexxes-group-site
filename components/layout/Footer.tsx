@@ -1,107 +1,125 @@
 "use client";
 
-import React from "react";
 import Link from "next/link";
-import { ArrowRight, MapPin, Mail, Phone, Circle } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
-const FOOTER_DATA = {
-  services: {
-    title: "Services",
-    links: [
-      { label: "Stock Market", href: "/services/stock-market" },
-      { label: "Real Estate", href: "/services/real-estate" },
-      { label: "Tourism", href: "/services/tourism" },
-    ]
-  },
-  company: {
-    title: "Company",
-    links: [
-      { label: "About Us", href: "/about" },
-      // { label: "How It Works", href: "/process" },
-      // { label: "Join Network", href: "/network" },
-      { label: "Contact", href: "/contact" },
-    ]
-  },
-  access: {
-    title: "Members",
-    links: [
-      { label: "Member Login", href: "/login" },
-      { label: "Register", href: "/register" },
-      { label: "Dashboard", href: "/dashboard" },
-    ]
-  }
+const links = {
+  Services:[
+    { label: "Tourism", href: "/services/tourism" },
+    { label: "Real Estate", href: "/services/real-estate" },
+    { label: "Stock Market", href: "/services/stock-market" },
+  ],
+  Company:[
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
+  ],
+  Members:[
+    { label: "Login", href: "/login" },
+    { label: "Register", href: "/register" },
+    { label: "Dashboard", href: "/dashboard" },
+  ],
 };
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#020617] text-slate-400 overflow-hidden border-t border-white/5">
+    <footer className="bg-ink overflow-hidden">
+      
+      {/* ── TOP — BIG NAME + LINKS ── */}
+      <div className="max-w-7xl mx-auto px-6 md:px-8 pt-16 md:pt-24 pb-12 md:pb-16">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 lg:gap-20">
 
-      <div className="max-w-7xl mx-auto px-6 md:px-8">
-
-        {/* ── CTA ── */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between py-10 gap-6 border-b border-white/5">
-          <div>
-            <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-1">Be Your Own Boss</p>
-            <h3 className="font-playfair text-2xl md:text-3xl text-white font-bold">
-              Grow. Invest. <span className="text-gold-primary italic">Travel.</span>
-            </h3>
+          {/* Left — Brand */}
+          <div className="shrink-0 flex flex-col items-start">
+            {/* Reduced the clamp slightly so it's elegant, not overpowering */}
+            <h2 className="font-soria text-[clamp(3rem,8vw,6.5rem)] text-base-white leading-[0.9] tracking-tight">
+              Lexxes
+              <br />
+              <span className="text-gold-primary italic pr-4">Group.</span>
+            </h2>
+            <div className="flex items-center gap-3 mt-6">
+              <div className="h-px w-8 bg-gold-primary/50" />
+              <p className="font-inter text-[10px] font-medium uppercase tracking-[0.3em] text-white/40">
+                Be Your Own Boss
+              </p>
+            </div>
           </div>
+
+          {/* Right — Nav links */}
+          {/* Changed to 2 cols on mobile, 3 on tablet+ to prevent squishing */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-10 md:gap-16 pb-2 w-full lg:w-auto">
+            {Object.entries(links).map(([title, items]) => (
+              <div key={title} className="flex flex-col gap-4">
+                <p className="font-inter text-[10px] font-semibold uppercase tracking-[0.25em] text-gold-primary">
+                  {title}
+                </p>
+                <ul className="flex flex-col gap-3">
+                  {items.map((item) => (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        className="group flex items-center gap-2 font-inter text-sm text-white/40 hover:text-base-white transition-all duration-300"
+                      >
+                        {/* Sleek animated line on hover */}
+                        <span className="w-0 h-px bg-gold-primary transition-all duration-300 group-hover:w-3" />
+                        <span className="group-hover:translate-x-1 transition-transform duration-300">
+                          {item.label}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── ELEGANT GRADIENT DIVIDER ── */}
+      <div className="max-w-7xl mx-auto px-6 md:px-8">
+        <div className="h-px w-full bg-gradient-to-r from-white/10 via-white/5 to-transparent" />
+      </div>
+
+      {/* ── BOTTOM BAR ── */}
+      {/* Used balanced flex-1 columns for perfect alignment */}
+      <div className="max-w-7xl mx-auto px-6 md:px-8 py-8 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0">
+        
+        {/* Copyright */}
+        <div className="w-full md:flex-1 text-center md:text-left">
+          <p className="font-inter text-[10px] uppercase tracking-widest text-white/30">
+            © {new Date().getFullYear()} Lexxes Group · Mumbai, India
+          </p>
+        </div>
+
+        {/* Call to Action */}
+        <div className="w-full md:flex-1 flex justify-center">
           <Link
-            href="/contact"
-            className="group flex items-center gap-2 rounded-lg bg-gold-primary hover:bg-gold-light text-navy-dark px-6 py-3 font-inter font-bold text-xs uppercase tracking-widest transition-all shrink-0"
+            href="/register"
+            className="group flex items-center gap-2 font-inter text-[11px] font-bold uppercase tracking-[0.2em] text-gold-primary hover:text-gold-light transition-all duration-300"
           >
-            Join Now <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            Join Now
+            <span className="relative flex items-center justify-center w-6 h-6 rounded-full bg-gold-primary/10 group-hover:bg-gold-primary/20 transition-colors duration-300">
+              <ArrowUpRight 
+                size={12} 
+                className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" 
+              />
+            </span>
           </Link>
         </div>
 
-        {/* ── GRID ── */}
-        <div className="py-10 grid grid-cols-2 sm:grid-cols-4 gap-8 border-b border-white/5">
-
-          {/* Brand */}
-          <div className="col-span-2 sm:col-span-1 space-y-4">
-            <Link href="/" className="flex items-baseline gap-1 group w-fit">
-              <span className="font-playfair text-xl font-bold text-white group-hover:text-gold-light transition">Lexxes</span>
-              <span className="w-1.5 h-1.5 bg-gold-primary rounded-full" />
-              <span className="font-inter text-[9px] tracking-[0.4em] text-gold-primary uppercase font-black">Group</span>
-            </Link>
-            <div className="flex flex-col gap-1.5 font-inter text-xs">
-              <a href="mailto:contact@lexxesgroup.com" className="hover:text-gold-primary transition truncate">contact@lexxesgroup.com</a>
-              <a href="tel:+9270312260" className="hover:text-gold-primary transition">+91 92703 12260</a>
-              <span className="text-slate-600">Mumbai, Maharashtra</span>
-            </div>
-          </div>
-
-          {/* Nav columns */}
-          {Object.values(FOOTER_DATA).map((section) => (
-            <div key={section.title} className="space-y-3">
-              <h4 className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase font-bold">
-                {section.title}
-              </h4>
-              <ul className="space-y-2">
-                {section.links.map((link) => (
-                  <li key={link.href}>
-                    <Link href={link.href} className="font-inter text-xs text-slate-400 hover:text-white transition-colors">
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        {/* ── BOTTOM ── */}
-        <div className="py-5 flex flex-col sm:flex-row justify-between items-center gap-3 border-white/5  font-inter text-[10px] uppercase tracking-widest text-slate-600">
-          <span>© {new Date().getFullYear()} Lexxes Group. All rights reserved.</span>
-          <div className="flex items-center gap-2">
-            <span>Built with</span>
-            <Circle size={4} className="fill-gold-primary text-gold-primary" />
-            <span>in Mumbai</span>
-          </div>
-          <div className="flex gap-4">
-            <Link href="/privacy" className="hover:text-gold-primary transition-colors">Privacy</Link>
-            <Link href="/terms" className="hover:text-gold-primary transition-colors">Terms</Link>
-          </div>
+        {/* Legal Links */}
+        <div className="w-full md:flex-1 flex justify-center md:justify-end gap-6">
+          <Link 
+            href="/privacy" 
+            className="font-inter text-[10px] uppercase tracking-widest text-white/30 hover:text-white/70 transition-colors duration-300"
+          >
+            Privacy
+          </Link>
+          <Link 
+            href="/terms" 
+            className="font-inter text-[10px] uppercase tracking-widest text-white/30 hover:text-white/70 transition-colors duration-300"
+          >
+            Terms
+          </Link>
         </div>
 
       </div>

@@ -5,36 +5,36 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, MapPin, Building2, TrendingUp, ShieldCheck, Users, ChevronLeft, ChevronRight, Phone } from "lucide-react";
 
-const heroSlides = [
+const heroSlides =[
   { img: "/pageimages/realestate/heroimg.png", place: "Nagpur, Maharashtra", label: "Bank Auction Properties" },
   { img: "/pageimages/realestate/heroimg2.png", place: "Pune, Maharashtra", label: "Premium Listings" },
   { img: "/pageimages/realestate/heroimg3.png", place: "Mumbai, Maharashtra", label: "Investment Consultation" },
 ];
 
-const properties = [
+const properties =[
   {
     img: "/pageimages/realestate/product1.png",
     title: "3BHK Bank Auction Flat",
     location: "Nagpur, Maharashtra",
-    price: "₹28,00,000",
-    original: "₹45,00,000",
+    price: "₹42,00,000",
+    original: "₹65,00,000",
     discount: "38% below market",
     tag: "Bank Auction",
-    details: ["1,200 sq ft", "3 BHK", "Ready to Move", "2nd Floor"],
+    details:["1,200 sq ft", "3 BHK", "Ready to Move", "2nd Floor"],
   },
   {
     img: "/pageimages/realestate/product2.png",
     title: "Premium 2BHK Apartment",
     location: "Wardha Road, Nagpur",
-    price: "₹42,00,000",
+    price: "₹47,00,000",
     original: null,
     discount: null,
     tag: "Premium",
-    details: ["950 sq ft", "2 BHK", "New Construction", "Gated Society"],
+    details:["950 sq ft", "2 BHK", "New Construction", "Gated Society"],
   },
   {
     img: "/pageimages/realestate/product3.png",
-    title: "Commercial Office Space",
+    title: "2BHK Flat in Prime Location",
     location: "Civil Lines, Nagpur",
     price: "₹65,00,000",
     original: "₹85,00,000",
@@ -50,38 +50,38 @@ const properties = [
     original: null,
     discount: null,
     tag: "Investment",
-    details: ["1,800 sq ft", "Plot", "RERA Approved", "Clear Title"],
+    details:["1,800 sq ft", "Plot", "RERA Approved", "Clear Title"],
   },
   {
     img: "/pageimages/realestate/product5.png",
     title: "4BHK Bank Auction Villa",
     location: "Amravati Road, Nagpur",
-    price: "₹55,00,000",
-    original: "₹90,00,000",
+    price: "₹87,00,000",
+    original: "₹1,20,00,000",
     discount: "39% below market",
     tag: "Bank Auction",
-    details: ["2,800 sq ft", "4 BHK", "Independent Villa", "Corner Plot"],
+    details:["2,800 sq ft", "4 BHK", "Independent Villa", "Corner Plot"],
   },
   {
     img: "/pageimages/realestate/product6.png",
-    title: "Studio Apartment",
+    title: "1BHK Apartment",
     location: "Dharampeth, Nagpur",
-    price: "₹22,00,000",
-    original: null,
-    discount: null,
+    price: "₹24,00,000",
+    original: "₹45,00,000",
+    discount: "47% below market",
     tag: "Premium",
-    details: ["450 sq ft", "Studio", "Furnished", "City View"],
+    details:["450 sq ft", "Studio", "Furnished", "City View"],
   },
 ];
 
-const steps = [
+const steps =[
   { step: "01", title: "Join as Member", desc: "Register with Lexxes Group to get exclusive access to bank auction listings and premium properties." },
   { step: "02", title: "Browse Listings", desc: "Explore verified property listings — bank auctions, premium homes and investment plots." },
   { step: "03", title: "Due Diligence", desc: "Our team verifies all legal documents, title deeds and property records before you invest." },
   { step: "04", title: "Own Your Property", desc: "Complete the purchase with our guided support and step into your new asset." },
 ];
 
-const whyUs = [
+const whyUs =[
   { icon: Building2, title: "Bank Auction Access", desc: "Get properties at 20-40% below market value through verified bank auction listings." },
   { icon: ShieldCheck, title: "Legal Verification", desc: "Every property is checked for clear title, RERA compliance and legal documentation." },
   { icon: TrendingUp, title: "Investment Guidance", desc: "Expert advice on which properties offer the best returns for your investment goals." },
@@ -97,16 +97,16 @@ export default function RealEstatePage() {
   useEffect(() => {
     const timer = setInterval(() => setCurrent((p) => (p + 1) % heroSlides.length), INTERVAL);
     return () => clearInterval(timer);
-  }, []);
+  },[]);
 
-  const prev = useCallback(() => setCurrent((p) => (p - 1 + heroSlides.length) % heroSlides.length), []);
-  const next = useCallback(() => setCurrent((p) => (p + 1) % heroSlides.length), []);
+  const prev = useCallback(() => setCurrent((p) => (p - 1 + heroSlides.length) % heroSlides.length),[]);
+  const next = useCallback(() => setCurrent((p) => (p + 1) % heroSlides.length),[]);
 
   const tags = ["All", "Bank Auction", "Premium", "Investment"];
   const filtered = activeTag === "All" ? properties : properties.filter((p) => p.tag === activeTag);
 
   return (
-    <main className="min-h-screen pt-11 bg-[#F8F7F5] text-[#1a1a2e] overflow-x-hidden selection:bg-navy-dark selection:text-white">
+    <main className="min-h-screen pb-4 pt-11 bg-base text-ink overflow-x-hidden selection:bg-ink selection:text-base-white">
 
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes fadeUpReveal {
@@ -132,8 +132,8 @@ export default function RealEstatePage() {
             <Image src={slide.img} alt={slide.place} fill priority={i === 0}
               className={`object-cover transition-transform ease-out ${current === i ? "scale-[1.05] duration-[12000ms]" : "scale-100 duration-1000"}`}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/95 via-navy-dark/40 to-navy-dark/10" />
-            <div className="absolute inset-0 bg-gradient-to-r from-navy-dark/80 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/40 to-ink/10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-transparent to-transparent" />
           </div>
         ))}
 
@@ -147,7 +147,7 @@ export default function RealEstatePage() {
                 Lexxes Group Presents
               </p>
               <div className="flex items-center gap-4 flex-wrap">
-                <span className="font-playfair text-3xl md:text-4xl font-bold text-white tracking-tight">
+                <span className="font-family-soria text-3xl md:text-4xl font-bold text-base-white tracking-tight">
                   Alliance Real Estate
                 </span>
                 <span className="w-px h-8 bg-gold-primary/40" />
@@ -160,36 +160,36 @@ export default function RealEstatePage() {
               </div>
             </div>
 
-            <h1 className="fade-up delay-1 font-playfair text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-4 leading-[1.0] tracking-tight">
+            <h1 className="fade-up delay-1 font-family-soria text-5xl md:text-7xl lg:text-8xl font-bold text-base-white mb-4 leading-[1.0] tracking-tight">
               Own Premium<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-primary via-[#ffeaab] to-gold-primary italic pr-4">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-primary via-gold-light to-gold-primary italic pr-4">
                 Properties.
               </span>
             </h1>
 
             <div className="fade-up delay-2 flex items-center gap-2 mb-5">
               <MapPin size={14} className="text-gold-primary" />
-              <span className="font-inter text-sm text-white/80 font-medium">{heroSlides[current].place}</span>
-              <span className="font-inter text-[10px] text-white/40 uppercase tracking-widest ml-1">— {heroSlides[current].label}</span>
+              <span className="font-inter text-sm text-base-white/80 font-medium">{heroSlides[current].place}</span>
+              <span className="font-inter text-[10px] text-base-white/40 uppercase tracking-widest ml-1">— {heroSlides[current].label}</span>
             </div>
 
-            <p className="fade-up delay-2 font-inter text-base md:text-lg text-white/70 max-w-xl font-light mb-8 leading-relaxed">
+            <p className="fade-up delay-2 font-inter text-base md:text-lg text-base-white/70 max-w-xl font-light mb-8 leading-relaxed">
               Access bank auction properties and premium real estate at unbeatable prices. Guided investment from discovery to ownership.
             </p>
 
             <div className="fade-up delay-3 flex flex-col sm:flex-row gap-4 mb-12">
-              <Link href="/register" className="group relative flex items-center justify-center gap-3 bg-gold-primary text-navy-dark px-8 py-4 font-inter font-bold text-xs uppercase tracking-widest transition rounded-xl shadow-[0_4px_20px_rgba(201,168,76,0.3)] overflow-hidden w-fit">
-                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-[shine_1.5s_ease-in-out]" />
+              <Link href="/register" className="group relative flex items-center justify-center gap-3 bg-gold-primary text-ink px-8 py-4 font-inter font-bold text-xs uppercase tracking-widest transition rounded-xl shadow-[0_4px_20px_rgba(201,168,76,0.3)] overflow-hidden w-fit hover:bg-gold-dark">
+                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-base-white/40 to-transparent group-hover:animate-[shine_1.5s_ease-in-out]" />
                 <span className="relative z-10">View Properties</span>
                 <ArrowRight size={14} className="relative z-10 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <a href="#listings" className="flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white px-8 py-4 font-inter font-bold text-xs uppercase tracking-widest transition rounded-xl w-fit">
+              <a href="#listings" className="flex items-center justify-center gap-2 bg-base-white/10 hover:bg-base-white/20 backdrop-blur-sm border border-base-white/20 text-base-white px-8 py-4 font-inter font-bold text-xs uppercase tracking-widest transition rounded-xl w-fit">
                 Browse Listings
               </a>
             </div>
 
             <div className="flex items-center gap-5">
-              <button onClick={prev} className="w-9 h-9 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm flex items-center justify-center hover:border-gold-primary/50 transition text-white/60 hover:text-gold-primary">
+              <button onClick={prev} className="w-9 h-9 rounded-full border border-base-white/20 bg-base-white/10 backdrop-blur-sm flex items-center justify-center hover:border-gold-primary/50 transition text-base-white/60 hover:text-gold-primary">
                 <ChevronLeft size={16} />
               </button>
               <div className="flex items-center gap-2">
@@ -199,10 +199,10 @@ export default function RealEstatePage() {
                   </button>
                 ))}
               </div>
-              <button onClick={next} className="w-9 h-9 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm flex items-center justify-center hover:border-gold-primary/50 transition text-white/60 hover:text-gold-primary">
+              <button onClick={next} className="w-9 h-9 rounded-full border border-base-white/20 bg-base-white/10 backdrop-blur-sm flex items-center justify-center hover:border-gold-primary/50 transition text-base-white/60 hover:text-gold-primary">
                 <ChevronRight size={16} />
               </button>
-              <span className="font-inter text-[10px] text-white/30 uppercase tracking-widest ml-2">
+              <span className="font-inter text-[10px] text-base-white/30 uppercase tracking-widest ml-2">
                 {String(current + 1).padStart(2, "0")} / {String(heroSlides.length).padStart(2, "0")}
               </span>
             </div>
@@ -210,15 +210,15 @@ export default function RealEstatePage() {
           </div>
         </div>
 
-        <div className="absolute bottom-0 right-0 z-20 hidden lg:flex items-center gap-10 px-10 py-5 bg-navy-dark/70 backdrop-blur-xl border-t border-l border-white/5 rounded-tl-2xl">
+        <div className="absolute bottom-0 right-0 z-20 hidden lg:flex items-center gap-10 px-10 py-5 bg-ink/70 backdrop-blur-xl border-t border-l border-base-white/5 rounded-tl-2xl">
           {[
             { value: "40%", label: "Below Market" },
             { value: "100%", label: "Verified" },
             { value: "₹18L", label: "Starts From" },
           ].map((s) => (
             <div key={s.label} className="text-center">
-              <p className="font-playfair text-xl font-bold text-gold-primary">{s.value}</p>
-              <p className="font-inter text-[9px] uppercase tracking-widest text-white/40 mt-0.5">{s.label}</p>
+              <p className="font-family-soria text-xl font-bold text-gold-primary">{s.value}</p>
+              <p className="font-inter text-[9px] uppercase tracking-widest text-base-white/40 mt-0.5">{s.label}</p>
             </div>
           ))}
         </div>
@@ -227,16 +227,15 @@ export default function RealEstatePage() {
       {/* ══════════════════════════════════════
           BANK AUCTION HIGHLIGHT
       ══════════════════════════════════════ */}
-      {/* Updated to bg-navy-dark theme */}
-      <section className="py-16 bg-navy-dark text-white">
+      <section className="py-16 bg-ink text-base-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div>
               <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-3 font-bold">Exclusive Access</p>
-              <h2 className="font-playfair text-3xl md:text-4xl font-bold mb-2">
+              <h2 className="font-family-soria text-3xl md:text-4xl font-bold mb-2">
                 Bank Auction Properties — <span className="text-gold-primary italic">Up to 40% Off.</span>
               </h2>
-              <p className="font-inter text-sm text-white/50 font-light max-w-lg">
+              <p className="font-inter text-sm text-base-white/50 font-light max-w-lg">
                 When banks seize properties for loan defaults, they auction them at significantly reduced prices. Lexxes Group members get first access to these exclusive deals.
               </p>
             </div>
@@ -245,9 +244,9 @@ export default function RealEstatePage() {
                 { value: "20–40%", label: "Discount Range" },
                 { value: "Legal", label: "100% Verified" },
               ].map((s) => (
-                <div key={s.label} className="text-center px-6 py-5 rounded-2xl bg-white/5 border border-white/10">
-                  <p className="font-playfair text-2xl font-bold text-gold-primary">{s.value}</p>
-                  <p className="font-inter text-[10px] uppercase tracking-widest text-white/40 mt-1">{s.label}</p>
+                <div key={s.label} className="text-center px-6 py-5 rounded-2xl bg-base-white/5 border border-base-white/10">
+                  <p className="font-family-soria text-2xl font-bold text-gold-primary">{s.value}</p>
+                  <p className="font-inter text-[10px] uppercase tracking-widest text-base-white/40 mt-1">{s.label}</p>
                 </div>
               ))}
             </div>
@@ -258,7 +257,7 @@ export default function RealEstatePage() {
       {/* ══════════════════════════════════════
           PROPERTY LISTINGS
       ══════════════════════════════════════ */}
-      <section id="listings" className="relative py-24 bg-[#F8F7F5]">
+      <section id="listings" className="relative py-24 bg-base">
         {/* ── GRID PATTERN ── */}
         <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
           <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
@@ -277,8 +276,8 @@ export default function RealEstatePage() {
               <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-3 font-bold flex items-center gap-2">
                 <span className="w-4 h-px bg-gold-primary/50" /> Property Listings
               </p>
-              <h2 className="font-playfair text-4xl md:text-5xl font-bold text-navy-dark">
-                Available <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-primary to-amber-600 italic">Properties.</span>
+              <h2 className="font-family-soria text-4xl md:text-5xl font-bold text-ink">
+                Available <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-primary to-gold-dark italic">Properties.</span>
               </h2>
             </div>
 
@@ -287,8 +286,8 @@ export default function RealEstatePage() {
                 <button key={tag} onClick={() => setActiveTag(tag)}
                   className={`px-4 py-2 rounded-xl font-inter text-xs font-bold uppercase tracking-wider transition ${
                     activeTag === tag
-                      ? "bg-navy-dark text-white"
-                      : "bg-white border border-slate-200 text-slate-500 hover:border-slate-300"
+                      ? "bg-ink text-base-white"
+                      : "bg-base-white border border-border text-ink-secondary hover:border-ink-light"
                   }`}
                 >
                   {tag}
@@ -299,19 +298,19 @@ export default function RealEstatePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((property, i) => (
-              <div key={i} className="group bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+              <div key={i} className="group bg-base-white rounded-2xl border border-border shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 overflow-hidden">
                 <div className="relative h-52 overflow-hidden">
                   <Image src={property.img} alt={property.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-dark/60 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent" />
 
                   <div className="absolute top-3 left-3 flex gap-2">
                     <span className={`font-inter text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md ${
-                      property.tag === "Bank Auction" ? "bg-red-500/90 text-white" : property.tag === "Premium" ? "bg-gold-primary text-navy-dark" : "bg-emerald-500/90 text-white"
+                      property.tag === "Bank Auction" ? "bg-red-500/90 text-base-white" : property.tag === "Premium" ? "bg-gold-primary text-ink" : "bg-emerald-500/90 text-base-white"
                     }`}>
                       {property.tag}
                     </span>
                     {property.discount && (
-                      <span className="font-inter text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-white/90 text-red-600">
+                      <span className="font-inter text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-base-white/90 text-red-600">
                         {property.discount}
                       </span>
                     )}
@@ -319,22 +318,22 @@ export default function RealEstatePage() {
 
                   <div className="absolute bottom-3 left-3 flex items-center gap-1.5">
                     <MapPin size={11} className="text-gold-primary" />
-                    <span className="font-inter text-[10px] font-bold text-white uppercase tracking-wider">{property.location}</span>
+                    <span className="font-inter text-[10px] font-bold text-base-white uppercase tracking-wider">{property.location}</span>
                   </div>
                 </div>
 
                 <div className="p-5">
-                  <h3 className="font-playfair text-lg font-bold text-navy-dark mb-1">{property.title}</h3>
+                  <h3 className="font-family-soria text-lg font-bold text-ink mb-1">{property.title}</h3>
                   <div className="flex items-baseline gap-2 mb-4">
-                    <span className="font-playfair text-2xl font-bold text-navy-dark">{property.price}</span>
-                    {property.original && <span className="font-inter text-xs text-slate-400 line-through">{property.original}</span>}
+                    <span className="font-family-soria text-2xl font-bold text-ink">{property.price}</span>
+                    {property.original && <span className="font-inter text-xs text-ink-light line-through">{property.original}</span>}
                   </div>
                   <div className="flex flex-wrap gap-1.5 mb-5">
                     {property.details.map((d) => (
-                      <span key={d} className="font-inter text-[9px] font-bold uppercase tracking-wider text-slate-500 bg-slate-100 px-2 py-1 rounded-md">{d}</span>
+                      <span key={d} className="font-inter text-[9px] font-bold uppercase tracking-wider text-ink-secondary bg-base px-2 py-1 rounded-md">{d}</span>
                     ))}
                   </div>
-                  <Link href="/register" className="group/btn flex items-center justify-center gap-2 w-full py-3 bg-navy-dark hover:bg-[#2a2a4e] text-white rounded-xl font-inter font-bold text-xs uppercase tracking-widest transition">
+                  <Link href="/register" className="group/btn flex items-center justify-center gap-2 w-full py-3 bg-ink hover:bg-blue-dark text-base-white rounded-xl font-inter font-bold text-xs uppercase tracking-widest transition">
                     Enquire Now
                     <ArrowRight size={13} className="group-hover/btn:translate-x-0.5 transition-transform" />
                   </Link>
@@ -344,8 +343,8 @@ export default function RealEstatePage() {
           </div>
 
           <div className="mt-10 text-center">
-            <p className="font-inter text-sm text-slate-400 mb-4">More properties available exclusively for Lexxes Group members.</p>
-            <Link href="/register" className="group inline-flex items-center gap-2 font-inter text-sm font-bold uppercase tracking-widest text-gold-primary hover:text-amber-600 transition border-b border-gold-primary/30 hover:border-amber-600/50 pb-0.5">
+            <p className="font-inter text-sm text-ink-secondary mb-4">More properties available exclusively for Lexxes Group members.</p>
+            <Link href="/register" className="group inline-flex items-center gap-2 font-inter text-sm font-bold uppercase tracking-widest text-gold-primary hover:text-gold-dark transition border-b border-gold-primary/30 hover:border-gold-dark/50 pb-0.5">
               Join to See All Listings <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
@@ -355,7 +354,7 @@ export default function RealEstatePage() {
       {/* ══════════════════════════════════════
           HOW IT WORKS
       ══════════════════════════════════════ */}
-      <section className="relative py-24 bg-white border-y border-slate-100">
+      <section className="relative py-24 bg-base-white border-y border-border">
         <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
           <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -370,19 +369,19 @@ export default function RealEstatePage() {
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8">
           <div className="mb-14">
             <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-3 font-bold">Process</p>
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-navy-dark">
-              From Search to <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-primary to-amber-600 italic">Ownership.</span>
+            <h2 className="font-family-soria text-4xl md:text-5xl font-bold text-ink">
+              From Search to <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-primary to-gold-dark italic">Ownership.</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {steps.map((step) => (
-              <div key={step.step} className="relative p-7 rounded-2xl bg-[#F8F7F5] border border-slate-100 hover:border-gold-primary/30 hover:shadow-sm transition-all duration-300 group">
-                <div className="absolute -top-3 -right-2 font-playfair font-black text-7xl text-slate-100 leading-none select-none group-hover:text-gold-primary/10 transition">
+              <div key={step.step} className="relative p-7 rounded-2xl bg-base border border-border hover:border-gold-primary/30 hover:shadow-sm transition-all duration-300 group">
+                <div className="absolute -top-3 -right-2 font-family-soria font-black text-7xl text-base-secondary/30 leading-none select-none group-hover:text-gold-primary/10 transition">
                   {step.step}
                 </div>
                 <p className="font-inter text-[10px] font-bold uppercase tracking-widest text-gold-primary/60 mb-3">{step.step}</p>
-                <h3 className="font-playfair text-lg font-bold text-navy-dark mb-2">{step.title}</h3>
-                <p className="font-inter text-sm text-slate-500 font-light leading-relaxed">{step.desc}</p>
+                <h3 className="font-family-soria text-lg font-bold text-ink mb-2">{step.title}</h3>
+                <p className="font-inter text-sm text-ink-secondary font-light leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -392,7 +391,7 @@ export default function RealEstatePage() {
       {/* ══════════════════════════════════════
           WHY INVEST WITH US
       ══════════════════════════════════════ */}
-      <section className="relative py-24 bg-[#F8F7F5]">
+      <section className="relative py-24 bg-base">
         <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
           <svg className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -409,19 +408,19 @@ export default function RealEstatePage() {
             <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-3 font-bold flex items-center justify-center gap-2">
               <span className="w-8 h-px bg-gold-primary/40" /> Why Alliance Real Estate <span className="w-8 h-px bg-gold-primary/40" />
             </p>
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-navy-dark">
-              Why Invest <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-primary to-amber-600 italic">With Us?</span>
+            <h2 className="font-family-soria text-4xl md:text-5xl font-bold text-ink">
+              Why Invest <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-primary to-gold-dark italic">With Us?</span>
             </h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {whyUs.map((item) => (
-              <div key={item.title} className="p-7 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 text-center group">
+              <div key={item.title} className="p-7 rounded-2xl bg-base-white border border-border shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 text-center group">
                 <div className="w-12 h-12 rounded-2xl bg-gold-primary/10 border border-gold-primary/20 flex items-center justify-center mx-auto mb-5 group-hover:bg-gold-primary/20 transition">
                   <item.icon size={20} className="text-gold-primary" />
                 </div>
-                <h3 className="font-playfair text-lg font-bold text-navy-dark mb-2">{item.title}</h3>
-                <p className="font-inter text-sm text-slate-500 font-light leading-relaxed">{item.desc}</p>
+                <h3 className="font-family-soria text-lg font-bold text-ink mb-2">{item.title}</h3>
+                <p className="font-inter text-sm text-ink-secondary font-light leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -431,27 +430,26 @@ export default function RealEstatePage() {
       {/* ══════════════════════════════════════
           CTA
       ══════════════════════════════════════ */}
-      {/* Updated to bg-navy-dark theme */}
-      <section className="py-28 bg-navy-dark relative overflow-hidden">
+      <section className="py-28 bg-ink relative overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-[60vw] h-[300px] bg-gold-primary/8 blur-[120px] rounded-full" />
+          <div className="w-[60vw] h-[300px] bg-gold-primary/10 blur-[120px] rounded-full" />
         </div>
         <div className="relative max-w-3xl mx-auto px-6 md:px-8 text-center z-10">
           <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-5 font-bold">Get Started</p>
-          <h2 className="font-playfair text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+          <h2 className="font-family-soria text-5xl md:text-6xl font-bold text-base-white mb-6 leading-tight">
             Your dream property<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-primary via-[#ffeaab] to-gold-primary italic pr-4">is waiting.</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-primary via-gold-light to-gold-primary italic pr-4">is waiting.</span>
           </h2>
-          <p className="font-inter text-base text-white/50 font-light mb-10 max-w-lg mx-auto">
+          <p className="font-inter text-base text-base-white/50 font-light mb-10 max-w-lg mx-auto">
             Join Lexxes Group to access exclusive bank auction properties and premium real estate listings across Maharashtra.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/register" className="group relative flex items-center justify-center gap-3 bg-gold-primary text-navy-dark px-10 py-4 font-inter font-bold text-xs uppercase tracking-widest transition rounded-xl shadow-[0_4px_20px_rgba(201,168,76,0.3)] overflow-hidden">
-              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-[shine_1.5s_ease-in-out]" />
+            <Link href="/register" className="group relative flex items-center justify-center gap-3 bg-gold-primary text-ink px-10 py-4 font-inter font-bold text-xs uppercase tracking-widest transition rounded-xl shadow-[0_4px_20px_rgba(201,168,76,0.3)] overflow-hidden hover:bg-gold-dark">
+              <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-base-white/40 to-transparent group-hover:animate-[shine_1.5s_ease-in-out]" />
               <span className="relative z-10">Join & View Properties</span>
               <ArrowRight size={14} className="relative z-10 group-hover:translate-x-1 transition-transform" />
             </Link>
-            <Link href="/contact" className="flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 text-white px-10 py-4 font-inter font-bold text-xs uppercase tracking-widest transition rounded-xl">
+            <Link href="/contact" className="flex items-center justify-center gap-2 bg-base-white/5 hover:bg-base-white/10 border border-base-white/10 text-base-white px-10 py-4 font-inter font-bold text-xs uppercase tracking-widest transition rounded-xl">
               <Phone size={14} />
               Talk to an Expert
             </Link>

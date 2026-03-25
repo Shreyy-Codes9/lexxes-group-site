@@ -32,9 +32,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${playfair.variable} ${inter.variable} antialiased bg-navy-dark text-text-primary`}
-      >
+      <body className={`${playfair.variable} ${inter.variable} antialiased bg-cream text-ink`}>
         <AuthProvider>
           <LayoutWrapper>
             <main>{children}</main>
