@@ -73,7 +73,7 @@ export default function FeaturedServices() {
           </p>
 
           <Link
-            href="/network"
+            href="/contact"
             className="group relative flex h-14 w-64 items-center justify-center overflow-hidden rounded-full border border-ink bg-white transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2"
           >
             {/* 1. Background Fill (Wipes up from the bottom) */}

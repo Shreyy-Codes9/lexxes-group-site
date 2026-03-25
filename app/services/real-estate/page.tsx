@@ -178,9 +178,9 @@ export default function RealEstatePage() {
             </p>
 
             <div className="fade-up delay-3 flex flex-col sm:flex-row gap-4 mb-12">
-              <Link href="/register" className="group relative flex items-center justify-center gap-3 bg-gold-primary text-ink px-8 py-4 font-inter font-bold text-xs uppercase tracking-widest transition rounded-xl shadow-[0_4px_20px_rgba(201,168,76,0.3)] overflow-hidden w-fit hover:bg-gold-dark">
+              <Link href="/contact" className="group relative flex items-center justify-center gap-3 bg-gold-primary text-ink px-8 py-4 font-inter font-bold text-xs uppercase tracking-widest transition rounded-xl shadow-[0_4px_20px_rgba(201,168,76,0.3)] overflow-hidden w-fit hover:bg-gold-dark">
                 <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-base-white/40 to-transparent group-hover:animate-[shine_1.5s_ease-in-out]" />
-                <span className="relative z-10">View Properties</span>
+                <span className="relative z-10">Contact us</span>
                 <ArrowRight size={14} className="relative z-10 group-hover:translate-x-1 transition-transform" />
               </Link>
               <a href="#listings" className="flex items-center justify-center gap-2 bg-base-white/10 hover:bg-base-white/20 backdrop-blur-sm border border-base-white/20 text-base-white px-8 py-4 font-inter font-bold text-xs uppercase tracking-widest transition rounded-xl w-fit">
