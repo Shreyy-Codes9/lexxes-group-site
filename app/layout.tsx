@@ -17,12 +17,20 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Lexxes Group",
-  description: "Real Estate • Tourism • Stock Market Courses",
+  title: "Lexxes Group | Real Estate, Tourism & Investment Opportunities in India",
+  description:
+    "Lexxes Group offers real estate investment, tourism rewards, and financial growth opportunities. Join and grow your income with structured systems.",
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
+  keywords: [
+    "Lexxes Group",
+    "real estate investment India",
+    "tourism rewards",
+    "passive income India",
+    "network marketing business",
+  ],
 };
 
 export default function RootLayout({

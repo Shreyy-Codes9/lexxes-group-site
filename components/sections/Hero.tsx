@@ -55,7 +55,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="font-soria text-[clamp(2.8rem,6.5vw,6.5rem)] leading-[0.9] tracking-tight drop-shadow-xl mb-3"
+                className="font-family-soria text-[clamp(2.8rem,6.5vw,6.5rem)] leading-[0.9] tracking-tight drop-shadow-xl mb-3"
               >
                 GROW RICH.
                 <br />
@@ -167,7 +167,7 @@ export default function Hero() {
                 </Link>
               </div>
               <div className="relative z-10">
-                <h3 className="font-soria text-2xl md:text-3xl lg:text-4xl leading-[1.0] mb-2 drop-shadow-lg">
+                <h3 className="font-family-soria text-2xl md:text-3xl lg:text-4xl leading-[1.0] mb-2 drop-shadow-lg">
                   Alliance<br />Real Estate
                 </h3>
                 <p className="text-[11px] text-white/70 font-medium leading-relaxed hidden lg:block">
@@ -213,7 +213,7 @@ export default function Hero() {
                 </Link>
               </div>
               <div className="relative z-10">
-                <h3 className="font-soria text-2xl md:text-3xl lg:text-4xl leading-[1.0] mb-2 drop-shadow-md">
+                <h3 className="font-family-soria text-2xl md:text-3xl lg:text-4xl leading-[1.0] mb-2 drop-shadow-md">
                   Tred India<br />
                   <span className="text-gold-primary italic">Markets</span>
                 </h3>

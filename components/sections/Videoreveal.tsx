@@ -109,7 +109,7 @@ export default function VideoReveal() {
             <p className="font-inter text-[9px] md:text-[10px] font-bold uppercase tracking-[0.4em] text-ink-secondary mb-3 md:mb-4">
               Lexxes Group — Our Story
             </p>
-            <h2 className="font-soria text-[clamp(2.5rem,8vw,5.5rem)] text-ink leading-[0.9] tracking-tight mb-4">
+            <h2 className="font-family-soria text-[clamp(2.5rem,8vw,5.5rem)] text-ink leading-[0.9] tracking-tight mb-4">
               MORE THAN
               <br />
               <span className="italic text-gold-primary">A BUSINESS.</span>
@@ -184,7 +184,7 @@ export default function VideoReveal() {
                 <p className="font-inter text-[9px] md:text-[10px] font-bold uppercase tracking-[0.4em] text-gold-primary mb-3 md:mb-4">
                   Lexxes Group — Our Story
                 </p>
-                <h2 className="font-soria text-[clamp(2.5rem,6vw,5rem)] text-white leading-[0.9] tracking-tight mb-4 drop-shadow-xl">
+                <h2 className="font-family-soria text-[clamp(2.5rem,6vw,5rem)] text-white leading-[0.9] tracking-tight mb-4 drop-shadow-xl">
                   MORE THAN
                   <br />
                   <span className="italic text-gold-light">A BUSINESS.</span>

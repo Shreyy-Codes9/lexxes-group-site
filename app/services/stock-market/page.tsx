@@ -101,7 +101,7 @@ export default function StockMarketPage() {
                 Lexxes Group Presents
               </p>
               <div className="flex items-center gap-4 flex-wrap">
-                <span className="font-soria text-4xl md:text-5xl font-bold text-white tracking-tight drop-shadow-lg">
+                <span className="font-family-soria text-4xl md:text-5xl font-bold text-white tracking-tight drop-shadow-lg">
                   Tred India
                 </span>
                 <span className="w-px h-8 bg-gold-primary/40" />
@@ -115,7 +115,7 @@ export default function StockMarketPage() {
             </div>
 
             {/* Headline */}
-            <h1 className="fade-up delay-1 font-soria text-5xl md:text-7xl lg:text-[5.5rem] text-white mb-6 leading-[0.95] tracking-tight drop-shadow-2xl">
+            <h1 className="fade-up delay-1 font-family-soria text-5xl md:text-7xl lg:text-[5.5rem] text-white mb-6 leading-[0.95] tracking-tight drop-shadow-2xl">
               Learn The Market,<br />
               <span className="text-gold-light italic pr-4 drop-shadow-xl">
                 Master Your Money.
@@ -153,7 +153,7 @@ export default function StockMarketPage() {
             { value: "Live", label: "Daily Mentorship" },
           ].map((s) => (
             <div key={s.label} className="text-center">
-              <p className="font-soria text-2xl text-gold-primary drop-shadow-md">{s.value}</p>
+              <p className="font-family-soria text-2xl text-gold-primary drop-shadow-md">{s.value}</p>
               <p className="font-inter text-[9px] uppercase tracking-widest text-white/80 mt-0.5 drop-shadow-md">{s.label}</p>
             </div>
           ))}
@@ -168,7 +168,7 @@ export default function StockMarketPage() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-10">
             <div className="flex-1">
               <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-3 font-bold">Live Every Weekday</p>
-              <h2 className="font-soria text-4xl md:text-5xl mb-4 leading-[1.0] tracking-tight">
+              <h2 className="font-family-soria text-4xl md:text-5xl mb-4 leading-[1.0] tracking-tight">
                 Live Mentorship — <br className="hidden md:block" />
                 <span className="text-gold-light italic">Trade with Experts.</span>
               </h2>
@@ -182,7 +182,7 @@ export default function StockMarketPage() {
                 { value: "Live", label: "Real Trades" },
               ].map((s) => (
                 <div key={s.label} className="flex-1 md:flex-none text-center px-8 py-6 rounded-[2rem] bg-base-white/5 border border-base-white/10 shadow-sm">
-                  <p className="font-soria text-3xl text-gold-primary">{s.value}</p>
+                  <p className="font-family-soria text-3xl text-gold-primary">{s.value}</p>
                   <p className="font-inter text-[10px] uppercase tracking-widest text-base-white/60 mt-1 font-bold">{s.label}</p>
                 </div>
               ))}
@@ -200,7 +200,7 @@ export default function StockMarketPage() {
             <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-3 font-bold flex items-center justify-center md:justify-start gap-3">
               <span className="w-6 h-px bg-gold-primary/50" /> Our Courses
             </p>
-            <h2 className="font-soria text-4xl md:text-5xl text-ink tracking-tight">
+            <h2 className="font-family-soria text-4xl md:text-5xl text-ink tracking-tight">
               Learn at Your <span className="text-gold-primary italic">Own Pace.</span>
             </h2>
           </div>
@@ -220,7 +220,7 @@ export default function StockMarketPage() {
                     {course.level}
                   </span>
                   
-                  <h3 className="font-soria text-2xl text-ink mb-3 leading-tight">{course.title}</h3>
+                  <h3 className="font-family-soria text-2xl text-ink mb-3 leading-tight">{course.title}</h3>
                   <p className="font-inter text-sm text-ink-secondary font-light leading-relaxed mb-6">{course.desc}</p>
                   
                   <div className="flex flex-wrap gap-2 mb-8">
@@ -275,7 +275,7 @@ export default function StockMarketPage() {
             <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-3 font-bold flex items-center justify-center gap-3">
               <span className="w-8 h-px bg-gold-primary/40" /> Why Tred India <span className="w-8 h-px bg-gold-primary/40" />
             </p>
-            <h2 className="font-soria text-4xl md:text-5xl text-ink tracking-tight">
+            <h2 className="font-family-soria text-4xl md:text-5xl text-ink tracking-tight">
               Why Learn <span className="text-gold-primary italic">With Us?</span>
             </h2>
           </div>
@@ -285,7 +285,7 @@ export default function StockMarketPage() {
                 <div className="w-14 h-14 rounded-2xl bg-base-white border border-border shadow-sm flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:border-gold-primary/40 transition-transform duration-300">
                   <item.icon size={22} className="text-gold-primary" />
                 </div>
-                <h3 className="font-soria text-2xl text-ink mb-3 leading-tight">{item.title}</h3>
+                <h3 className="font-family-soria text-2xl text-ink mb-3 leading-tight">{item.title}</h3>
                 <p className="font-inter text-sm text-ink-secondary font-light leading-relaxed">{item.desc}</p>
               </div>
             ))}
@@ -300,19 +300,19 @@ export default function StockMarketPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="mb-16">
             <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-3 font-bold">Process</p>
-            <h2 className="font-soria text-4xl md:text-5xl text-ink tracking-tight">
+            <h2 className="font-family-soria text-4xl md:text-5xl text-ink tracking-tight">
               From Zero to <span className="text-gold-primary italic">Confident Trader.</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {steps.map((step) => (
               <div key={step.step} className="relative p-8 rounded-[2rem] bg-base-white border border-border hover:border-gold-primary/30 hover:shadow-md transition-all duration-300 group overflow-hidden">
-                <div className="absolute -top-4 -right-2 font-soria text-7xl text-base leading-none select-none group-hover:text-gold-primary/10 transition-colors duration-500 z-0">
+                <div className="absolute -top-4 -right-2 font-family-soria text-7xl text-base leading-none select-none group-hover:text-gold-primary/10 transition-colors duration-500 z-0">
                   {step.step}
                 </div>
                 <div className="relative z-10">
                   <p className="font-inter text-[10px] font-bold uppercase tracking-widest text-gold-primary mb-4">{step.step}</p>
-                  <h3 className="font-soria text-2xl text-ink mb-3">{step.title}</h3>
+                  <h3 className="font-family-soria text-2xl text-ink mb-3">{step.title}</h3>
                   <p className="font-inter text-sm text-ink-secondary font-light leading-relaxed">{step.desc}</p>
                 </div>
               </div>
@@ -331,7 +331,7 @@ export default function StockMarketPage() {
         
         <div className="relative max-w-3xl mx-auto px-6 md:px-8 text-center z-10">
           <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-5 font-bold">Start Today</p>
-          <h2 className="font-soria text-5xl md:text-6xl text-base-white mb-6 leading-tight tracking-tight">
+          <h2 className="font-family-soria text-5xl md:text-6xl text-base-white mb-6 leading-tight tracking-tight">
             The market won't <br />
             <span className="italic text-gold-light pr-2">wait for you.</span>
           </h2>

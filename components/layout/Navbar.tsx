@@ -101,7 +101,7 @@ export default function Navbar() {
                 <Image src="/logo1.png" alt="Lexxes Group" fill className="object-contain drop-shadow-sm" />
               </div>
               <div className="hidden lg:flex items-baseline gap-1">
-                <span className="font-soria font-bold text-4xl md:text-5xl text-ink tracking-wide group-hover:text-blue transition-colors duration-500 leading-9  drop-shadow-sm">
+                <span className="font-family-soria font-bold text-4xl md:text-5xl text-ink tracking-wide group-hover:text-blue transition-colors duration-500 leading-9  drop-shadow-sm">
                   Lexxes
                 </span>
                 <span className="w-2.5 h-2.5 bg-gold-primary rounded-full shadow-[0_0_12px_rgba(201,168,76,0.6)]" />

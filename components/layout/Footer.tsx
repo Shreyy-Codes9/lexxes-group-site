@@ -31,7 +31,7 @@ export default function Footer() {
           {/* Left — Brand */}
           <div className="shrink-0 flex flex-col items-start">
             {/* Reduced the clamp slightly so it's elegant, not overpowering */}
-            <h2 className="font-soria text-[clamp(3rem,8vw,6.5rem)] text-base-white leading-[0.9] tracking-tight">
+            <h2 className="font-family-soria text-[clamp(3rem,8vw,6.5rem)] text-base-white leading-[0.9] tracking-tight">
               Lexxes
               <br />
               <span className="text-gold-primary italic pr-4">Group.</span>

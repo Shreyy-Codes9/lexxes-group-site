@@ -54,7 +54,7 @@ export default function AboutSection() {
               <p className="font-inter text-[9px] font-bold uppercase tracking-[0.4em] text-ink-secondary mb-6 md:mb-8">
                 Who We Are
               </p>
-              <h2 className="font-soria text-[clamp(4rem,8vw,9rem)] leading-[0.85] tracking-tight text-ink">
+              <h2 className="font-family-soria text-[clamp(4rem,8vw,9rem)] leading-[0.85] tracking-tight text-ink">
                 Lexxes
                 <br />
                 <span className="text-gold-primary">Group.</span>

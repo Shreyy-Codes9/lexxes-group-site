@@ -90,7 +90,7 @@ export default function TourismPage() {
               <span className="font-inter text-[10px] font-bold tracking-[0.3em] text-white uppercase drop-shadow-md">Travel Asia • Tourism</span>
             </div>
 
-            <h1 className="fade-up delay-1 font-soria text-5xl md:text-7xl lg:text-[5.5rem] text-white mb-4 leading-[0.9] tracking-tight drop-shadow-2xl">
+            <h1 className="fade-up delay-1 font-family-soria text-5xl md:text-7xl lg:text-[5.5rem] text-white mb-4 leading-[0.9] tracking-tight drop-shadow-2xl">
               Your Success,<br />
               <span className="italic text-gold-light drop-shadow-xl">Your Reward.</span>
             </h1>
@@ -142,7 +142,7 @@ export default function TourismPage() {
         <div className="absolute bottom-0 right-0 z-20 hidden lg:flex items-center gap-10 px-10 py-5 bg-black/40 backdrop-blur-xl border-t border-l border-white/10 rounded-tl-2xl">
           {[{ value: "2+", label: "Destinations" }, { value: "100%", label: "Trip Covered" }, { value: "₹4.6K", label: "Starts From" }].map((s) => (
             <div key={s.label} className="text-center">
-              <p className="font-soria text-xl text-gold-primary drop-shadow-md">{s.value}</p>
+              <p className="font-family-soria text-xl text-gold-primary drop-shadow-md">{s.value}</p>
               <p className="font-inter text-[9px] uppercase tracking-widest text-white/80 mt-0.5 drop-shadow-md">{s.label}</p>
             </div>
           ))}
@@ -155,7 +155,7 @@ export default function TourismPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-4 font-bold">Why Travel With Us</p>
-              <h2 className="font-soria text-4xl md:text-5xl mb-6 leading-[0.9] tracking-tight">
+              <h2 className="font-family-soria text-4xl md:text-5xl mb-6 leading-[0.9] tracking-tight">
                 Travel is not a gift.<br />
                 <span className="italic text-gold-light">It's your reward.</span>
               </h2>
@@ -228,7 +228,7 @@ export default function TourismPage() {
               <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-3 font-bold flex items-center gap-2">
                 <span className="w-4 h-px bg-gold-primary/50" /> Destinations
               </p>
-              <h2 className="font-soria text-4xl md:text-5xl leading-[0.9] tracking-tight">
+              <h2 className="font-family-soria text-4xl md:text-5xl leading-[0.9] tracking-tight">
                 Where Will You <span className="italic text-gold-primary">Go?</span>
               </h2>
             </div>
@@ -276,7 +276,7 @@ export default function TourismPage() {
                       </motion.p>
                       <motion.h1
                         initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
-                        className="text-[12vw] md:text-[6vw] leading-[0.85] font-soria mb-6 tracking-tight text-white uppercase drop-shadow-2xl"
+                        className="text-[12vw] md:text-[6vw] leading-[0.85] font-family-soria mb-6 tracking-tight text-white uppercase drop-shadow-2xl"
                       >
                         {city} {country && <><br /><span className="italic font-light text-white/90">{country}</span></>}
                       </motion.h1>
@@ -338,7 +338,7 @@ export default function TourismPage() {
             <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-4 font-bold flex items-center justify-center gap-2">
               <span className="w-4 h-px bg-gold-primary/50" /> Reward Packages <span className="w-4 h-px bg-gold-primary/50" />
             </p>
-            <h2 className="font-soria text-4xl md:text-5xl text-ink leading-[0.9] tracking-tight">
+            <h2 className="font-family-soria text-4xl md:text-5xl text-ink leading-[0.9] tracking-tight">
               Choose Your <span className="italic text-gold-primary">Destination.</span>
             </h2>
           </div>
@@ -367,7 +367,7 @@ export default function TourismPage() {
                 </div>
                 <div className="flex-1 flex flex-col p-7 md:p-8 text-center">
                   <div className="mb-7 pb-7 border-b border-border">
-                    <p className="font-soria text-5xl text-ink">{pkg.price}</p>
+                    <p className="font-family-soria text-5xl text-ink">{pkg.price}</p>
                     <p className="font-inter text-[10px] uppercase tracking-widest text-ink-secondary mt-2 font-bold">One-Time Membership</p>
                   </div>
                   <ul className="inline-flex flex-col gap-3.5 text-left mx-auto mb-8">
@@ -399,16 +399,16 @@ export default function TourismPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-8">
           <div className="mb-14">
             <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-3 font-bold">How It Works</p>
-            <h2 className="font-soria text-4xl md:text-5xl leading-[0.9] tracking-tight">
+            <h2 className="font-family-soria text-4xl md:text-5xl leading-[0.9] tracking-tight">
               Earn Your Trip in <span className="italic text-gold-light">4 Steps.</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {steps.map((step) => (
               <div key={step.step} className="relative p-7 rounded-2xl bg-white/5 border border-white/10 hover:border-gold-primary/30 transition-all duration-300 group">
-                <div className="absolute -top-3 -right-2 font-soria text-7xl text-white/[0.03] leading-none select-none">{step.step}</div>
+                <div className="absolute -top-3 -right-2 font-family-soria text-7xl text-white/[0.03] leading-none select-none">{step.step}</div>
                 <p className="font-inter text-[10px] font-bold uppercase tracking-widest text-gold-primary/60 mb-3">{step.step}</p>
-                <h3 className="font-soria text-xl text-base-white mb-2">{step.title}</h3>
+                <h3 className="font-family-soria text-xl text-base-white mb-2">{step.title}</h3>
                 <p className="font-inter text-sm text-base-white/50 font-light leading-relaxed">{step.desc}</p>
               </div>
             ))}
@@ -423,7 +423,7 @@ export default function TourismPage() {
             <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-3 font-bold flex items-center justify-center gap-2">
               <span className="w-8 h-px bg-gold-primary/50" /> Member Stories <span className="w-8 h-px bg-gold-primary/50" />
             </p>
-            <h2 className="font-soria text-4xl md:text-5xl text-ink leading-[0.9] tracking-tight">
+            <h2 className="font-family-soria text-4xl md:text-5xl text-ink leading-[0.9] tracking-tight">
               They Grew. <span className="italic text-gold-primary">They Traveled.</span>
             </h2>
           </div>
@@ -439,7 +439,7 @@ export default function TourismPage() {
                 </div>
                 <p className="font-inter text-base text-ink font-light leading-relaxed mb-6 italic flex-1">"{t.quote}"</p>
                 <div className="flex items-center gap-3 pt-5 border-t border-border">
-                  <div className="w-10 h-10 rounded-full bg-gold-primary/10 border border-gold-primary/20 flex items-center justify-center font-soria text-base text-gold-primary">
+                  <div className="w-10 h-10 rounded-full bg-gold-primary/10 border border-gold-primary/20 flex items-center justify-center font-family-soria text-base text-gold-primary">
                     {t.name[0]}
                   </div>
                   <div>
@@ -460,7 +460,7 @@ export default function TourismPage() {
         </div>
         <div className="relative max-w-3xl mx-auto px-6 md:px-8 text-center z-10">
           <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-5 font-bold">Start Today</p>
-          <h2 className="font-soria text-5xl md:text-6xl text-base-white mb-6 leading-[0.9] tracking-tight">
+          <h2 className="font-family-soria text-5xl md:text-6xl text-base-white mb-6 leading-[0.9] tracking-tight">
             Your next trip is<br />
             <span className="italic text-gold-light">waiting for you.</span>
           </h2>

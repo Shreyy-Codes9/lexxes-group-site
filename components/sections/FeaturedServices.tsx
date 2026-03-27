@@ -63,7 +63,7 @@ export default function FeaturedServices() {
             What We Offer
           </p>
 
-          <h2 className="font-soria text-6xl sm:text-7xl lg:text-[5.5rem] tracking-tight leading-[0.85]  uppercase text-ink">
+          <h2 className="font-family-soria text-6xl sm:text-7xl lg:text-[5.5rem] tracking-tight leading-[0.85]  uppercase text-ink">
             Three<br />Ways To<br />
             <span className="italic text-gold-dark">Grow.</span>
           </h2>
@@ -150,7 +150,7 @@ export default function FeaturedServices() {
                   <div className="max-w-md">
                     <div className="flex items-center gap-4 mb-3">
                       <span className="font-inter text-sm font-bold text-ink-light">{service.id}</span>
-                      <h3 className="font-soria text-3xl md:text-4xl tracking-tight text-ink">
+                      <h3 className="font-family-soria text-3xl md:text-4xl tracking-tight text-ink">
                         {service.title}
                       </h3>
                     </div>

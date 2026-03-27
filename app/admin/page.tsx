@@ -51,7 +51,7 @@ function TreeNode({ node, depth = 0, isLast = false }: { node: any; depth?: numb
           isPremium ? "bg-gold-primary/5 border-gold-primary/30 hover:border-gold-primary/50" : "bg-base-white border-border hover:border-ink/20"
         }`}>
           <div className="flex items-center gap-3 min-w-0">
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 font-soria text-lg ${
+            <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 font-family-soria text-lg ${
               isPremium ? "bg-gold-primary/10 border border-gold-primary/30 text-gold-dark" : "bg-base border border-border text-ink-secondary"
             }`}>
               {node.name[0]}
@@ -208,7 +208,7 @@ export default function AdminPage() {
         <div className="flex items-center gap-3">
           <Shield size={20} className="text-gold-dark" />
           <div>
-            <p className="font-soria text-2xl text-ink leading-none mt-1">Lexxes Admin</p>
+            <p className="font-family-soria text-2xl text-ink leading-none mt-1">Lexxes Admin</p>
             <p className="font-inter text-[9px] text-ink-secondary uppercase tracking-widest font-bold">Management Panel</p>
           </div>
         </div>
@@ -264,7 +264,7 @@ export default function AdminPage() {
               ].map((s) => (
                 <div key={s.label} className="p-6 rounded-[2rem] bg-base-white border border-border shadow-sm">
                   <p className="font-inter text-[10px] uppercase tracking-widest text-ink-secondary font-bold mb-2">{s.label}</p>
-                  <p className={`font-soria text-4xl ${s.color}`}>{s.value}</p>
+                  <p className={`font-family-soria text-4xl ${s.color}`}>{s.value}</p>
                 </div>
               ))}
             </div>
@@ -311,7 +311,7 @@ export default function AdminPage() {
                       
                       {/* Left: Info */}
                       <div className="flex items-center gap-5 flex-1 min-w-0">
-                        <div className={`w-14 h-14 rounded-full flex items-center justify-center shrink-0 font-soria text-2xl ${
+                        <div className={`w-14 h-14 rounded-full flex items-center justify-center shrink-0 font-family-soria text-2xl ${
                           member.isActive ? "bg-gold-primary/10 border border-gold-primary/30 text-gold-dark" : "bg-base border border-border text-ink-secondary"
                         }`}>
                           {member.name[0]}
@@ -387,7 +387,7 @@ export default function AdminPage() {
           <div className="flex flex-col gap-6 fade-in">
             <div>
               <p className="font-inter text-[10px] tracking-[0.3em] text-gold-primary uppercase mb-2 font-bold">Overview</p>
-              <h1 className="font-soria text-4xl md:text-5xl font-bold text-ink tracking-tight">Full Network</h1>
+              <h1 className="font-family-soria text-4xl md:text-5xl font-bold text-ink tracking-tight">Full Network</h1>
               <p className="font-inter text-sm text-ink-secondary mt-2 font-medium">Click "View Tree" on any member to see their downline structure.</p>
             </div>
 
@@ -400,7 +400,7 @@ export default function AdminPage() {
                     <div key={member._id} className="flex flex-col gap-4 p-5 rounded-2xl bg-base border border-border hover:border-gold-primary/30 transition-colors shadow-sm group">
                       
                       <div className="flex items-center gap-4">
-                        <div className={`w-12 h-12 rounded-full flex items-center justify-center shrink-0 font-soria text-xl ${
+                        <div className={`w-12 h-12 rounded-full flex items-center justify-center shrink-0 font-family-soria text-xl ${
                           member.package === "premium" ? "bg-gold-primary/10 border border-gold-primary/30 text-gold-dark" : "bg-base-white border border-border text-ink-secondary"
                         }`}>
                           {member.name[0]}
@@ -455,7 +455,7 @@ export default function AdminPage() {
             <div className="flex items-center justify-between px-8 py-6 border-b border-border bg-base/50">
               <div>
                 <p className="font-inter text-[10px] text-gold-primary uppercase tracking-widest font-bold mb-1">Network Tree</p>
-                <h2 className="font-soria text-3xl text-ink tracking-tight">{selectedMember.name}</h2>
+                <h2 className="font-family-soria text-3xl text-ink tracking-tight">{selectedMember.name}</h2>
                 <p className="font-inter text-[10px] text-ink-secondary mt-1 font-medium">Code: <span className="font-bold text-ink">{selectedMember.referralCode}</span></p>
               </div>
               <button onClick={() => setSelectedMember(null)}
@@ -468,7 +468,7 @@ export default function AdminPage() {
             {/* Root node */}
             <div className="px-8 pt-6 pb-2">
               <div className="flex items-center gap-4 px-5 py-4 rounded-xl bg-gold-primary/5 border border-gold-primary/20 mb-1 shadow-sm">
-                <div className="w-12 h-12 rounded-full bg-gold-primary/10 border border-gold-primary/30 flex items-center justify-center shrink-0 font-soria text-xl text-gold-dark">
+                <div className="w-12 h-12 rounded-full bg-gold-primary/10 border border-gold-primary/30 flex items-center justify-center shrink-0 font-family-soria text-xl text-gold-dark">
                   {selectedMember.name[0]}
                 </div>
                 <div className="flex-1 min-w-0">
@@ -512,7 +512,7 @@ export default function AdminPage() {
                 { label: "Premium", value: memberTree.filter(n => n.package === "premium").length },
               ].map((s) => (
                 <div key={s.label} className="text-center bg-base-white py-3 rounded-xl border border-border shadow-sm">
-                  <p className="font-soria text-2xl text-gold-dark">{s.value}</p>
+                  <p className="font-family-soria text-2xl text-gold-dark">{s.value}</p>
                   <p className="font-inter text-[9px] uppercase tracking-widest text-ink-secondary font-bold mt-1">{s.label}</p>
                 </div>
               ))}

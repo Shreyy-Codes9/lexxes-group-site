@@ -45,7 +45,7 @@ export default function PackagesSection() {
             <p className="font-inter text-[9px] font-bold uppercase tracking-[0.4em] text-gold-primary mb-4">
               Membership Plans
             </p>
-            <h2 className="font-soria text-[clamp(2.5rem,5vw,5rem)] text-ink leading-[0.9] tracking-tight">
+            <h2 className="font-family-soria text-[clamp(2.5rem,5vw,5rem)] text-ink leading-[0.9] tracking-tight">
               CHOOSE YOUR
               <br />
               <span className="italic text-gold-primary">PATH TO</span>
@@ -90,7 +90,7 @@ export default function PackagesSection() {
                       Most Popular
                     </span>
                   </div>
-                  <h3 className="font-soria text-5xl md:text-6xl text-base-white leading-none">
+                  <h3 className="font-family-soria text-5xl md:text-6xl text-base-white leading-none">
                     ₹30,000
                   </h3>
                   <p className="font-inter text-xs text-ink-light mt-2 uppercase tracking-[0.15em]">
@@ -160,7 +160,7 @@ export default function PackagesSection() {
                   <span className="font-inter text-[9px] font-bold uppercase tracking-[0.3em] text-ink-secondary mb-3 block">
                     Starter
                   </span>
-                  <h3 className="font-soria text-4xl md:text-5xl text-ink leading-none">
+                  <h3 className="font-family-soria text-4xl md:text-5xl text-ink leading-none">
                     ₹4,600
                   </h3>
                   <p className="font-inter text-xs text-ink-secondary mt-2 uppercase tracking-[0.15em]">

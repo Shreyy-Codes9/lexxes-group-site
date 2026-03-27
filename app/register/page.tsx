@@ -93,7 +93,7 @@ export default function RegisterPage() {
               Back to Home
             </Link>
 
-            <h1 className="font-soria text-5xl md:text-6xl text-base-white mb-6 leading-[0.9] tracking-tight">
+            <h1 className="font-family-soria text-5xl md:text-6xl text-base-white mb-6 leading-[0.9] tracking-tight">
               Join the <span className="italic text-gold-primary">Network.</span>
             </h1>
             <p className="font-inter text-base text-base-white/60 font-light leading-relaxed mb-12 max-w-md">
@@ -123,7 +123,7 @@ export default function RegisterPage() {
           <div className="relative z-10 mt-16 hidden lg:block">
             <div className="w-full h-px bg-gradient-to-r from-base-white/20 to-transparent mb-6" />
             <div className="flex items-baseline gap-1.5 opacity-50">
-              <span className="font-soria text-2xl text-base-white">Lexxes</span>
+              <span className="font-family-soria text-2xl text-base-white">Lexxes</span>
               <span className="w-1.5 h-1.5 bg-gold-primary rounded-full" />
               <span className="font-inter text-base-white tracking-[0.25em] uppercase text-[9px] font-bold">Group</span>
             </div>
@@ -134,7 +134,7 @@ export default function RegisterPage() {
         <div className="lg:w-1/2 p-8 md:p-12 lg:p-16 bg-base-white flex flex-col justify-center">
 
           <div className="mb-8">
-            <h2 className="font-soria text-3xl md:text-4xl text-ink mb-2">Create Account</h2>
+            <h2 className="font-family-soria text-3xl md:text-4xl text-ink mb-2">Create Account</h2>
             <p className="font-inter text-sm text-ink-secondary font-light">Fill in your details to get started.</p>
           </div>
 
@@ -248,7 +248,7 @@ export default function RegisterPage() {
                       {pkg.label}
                     </span>
 
-                    <span className="font-soria text-3xl text-ink mb-1">
+                    <span className="font-family-soria text-3xl text-ink mb-1">
                       {pkg.price}
                     </span>
 

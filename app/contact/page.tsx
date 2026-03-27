@@ -37,7 +37,7 @@ export default function ContactPage() {
           <p className="font-inter text-[10px] tracking-[0.4em] text-gold-primary uppercase mb-4 font-bold flex items-center gap-4">
             <span className="w-8 h-px bg-gold-primary" /> Contact Us
           </p>
-          <h1 className="font-soria text-5xl md:text-7xl lg:text-[5.5rem] text-ink leading-[0.9] tracking-tight mb-6">
+          <h1 className="font-family-soria text-5xl md:text-7xl lg:text-[5.5rem] text-ink leading-[0.9] tracking-tight mb-6">
             We'd love to <br className="hidden md:block" />
             <span className="italic text-gold-primary">hear from you.</span>
           </h1>
@@ -68,7 +68,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <p className="font-inter text-[10px] uppercase tracking-widest text-base-white/40 mb-1">Phone</p>
-                        <p className="font-soria text-2xl text-base-white group-hover/link:text-gold-primary transition-colors">+91 92703 12260</p>
+                        <p className="font-family-soria text-2xl text-base-white group-hover/link:text-gold-primary transition-colors">+91 92703 12260</p>
                       </div>
                     </div>
                     <ArrowUpRight size={20} className="text-base-white/20 group-hover/link:text-gold-primary group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-all" />
@@ -81,7 +81,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <p className="font-inter text-[10px] uppercase tracking-widest text-base-white/40 mb-1">WhatsApp</p>
-                        <p className="font-soria text-2xl text-base-white group-hover/link:text-[#25D366] transition-colors">Chat with us</p>
+                        <p className="font-family-soria text-2xl text-base-white group-hover/link:text-[#25D366] transition-colors">Chat with us</p>
                       </div>
                     </div>
                     <ArrowUpRight size={20} className="text-base-white/20 group-hover/link:text-[#25D366] group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-all" />
@@ -100,7 +100,7 @@ export default function ContactPage() {
                     <Mail size={18} className="text-ink" />
                   </div>
                   <p className="font-inter text-[10px] uppercase tracking-[0.3em] text-ink-secondary font-bold mb-2">Written Inquiries</p>
-                  <p className="font-soria text-2xl md:text-3xl text-ink">contact@lexxesgroup.com</p>
+                  <p className="font-family-soria text-2xl md:text-3xl text-ink">contact@lexxesgroup.com</p>
                 </div>
                 <a 
                   href="mailto:contact@lexxesgroup.com" 
@@ -121,7 +121,7 @@ export default function ContactPage() {
                   <Send size={32} className="text-gold-primary ml-1" />
                 </div>
                 <div>
-                  <h3 className="font-soria text-4xl text-ink mb-3">Message Sent.</h3>
+                  <h3 className="font-family-soria text-4xl text-ink mb-3">Message Sent.</h3>
                   <p className="font-inter text-base text-ink-secondary font-light max-w-sm mx-auto">
                     Thank you for reaching out. Our team will get back to you within 24 hours.
                   </p>
@@ -136,7 +136,7 @@ export default function ContactPage() {
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                 <div className="mb-4">
-                  <h3 className="font-soria text-3xl md:text-4xl text-ink mb-2">Send an Inquiry</h3>
+                  <h3 className="font-family-soria text-3xl md:text-4xl text-ink mb-2">Send an Inquiry</h3>
                   <p className="font-inter text-sm text-ink-secondary font-light">Fill out the details below and we'll be in touch.</p>
                 </div>
 

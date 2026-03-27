@@ -62,7 +62,7 @@ export default function LoginPage() {
           <div className="flex flex-col items-center text-center mb-10">
             {/* Brand */}
             <Link href="/" className="flex items-baseline gap-1.5 mb-8 group">
-              <span className="font-soria text-3xl text-ink group-hover:text-gold-primary transition-colors">Lexxes</span>
+              <span className="font-family-soria text-3xl text-ink group-hover:text-gold-primary transition-colors">Lexxes</span>
               <span className="w-1.5 h-1.5 bg-gold-primary rounded-full" />
               <span className="font-inter text-ink-secondary tracking-[0.25em] uppercase text-[9px] font-bold">Group</span>
             </Link>
@@ -76,7 +76,7 @@ export default function LoginPage() {
               <span className="font-inter text-[10px] font-bold tracking-[0.3em] text-gold-primary uppercase">Member Login</span>
             </div>
 
-            <h1 className="font-soria text-4xl sm:text-5xl text-ink mb-3 tracking-tight">Welcome Back.</h1>
+            <h1 className="font-family-soria text-4xl sm:text-5xl text-ink mb-3 tracking-tight">Welcome Back.</h1>
             <p className="font-inter text-sm text-ink-secondary font-light">Sign in to access your Lexxes Group member dashboard.</p>
           </div>
 
